@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({Key? key}) : super(key: key);
+class About extends StatefulWidget {
+  const About({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _AboutPageState createState() => _AboutPageState();
+  _AboutState createState() => _AboutState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -39,15 +39,15 @@ class _MainPageState extends State<MainPage> {
     var container;
 
     if (currentPage == DrawerSections.home) {
-      container = const HomePage();
+      container = const Home();
     } else if (currentPage == DrawerSections.view_all_records) {
-      container = const ViewRecordPage();
+      container = const ViewRecords();
     } else if (currentPage == DrawerSections.language) {
-      container = const LanguagePage();
+      container = const Language();
     } else if (currentPage == DrawerSections.chg_pass) {
-      container = const ChgPassPage();
+      container = const Change_Password();
     } else if (currentPage == DrawerSections.about) {
-      container = const AboutPage();
+      container = const About();
     }
     return Scaffold(
       appBar: AppBar(

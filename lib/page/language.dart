@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class LanguagePage extends StatefulWidget {
-  const LanguagePage({Key? key}) : super(key: key);
+class Language extends StatefulWidget {
+  const Language({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _LanguagePageState createState() => _LanguagePageState();
+  _LanguageState createState() => _LanguageState();
 }
 
-class _LanguagePageState extends State<LanguagePage> {
+class _LanguageState extends State<Language> {
   @override
   Widget build(BuildContext context) {
     return Container(

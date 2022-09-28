@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ViewRecordPage extends StatefulWidget {
-  const ViewRecordPage({Key? key}) : super(key: key);
+class ViewRecords extends StatefulWidget {
+  const ViewRecords({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _ViewRecordPageState createState() => _ViewRecordPageState();
+  _ViewRecordsState createState() => _ViewRecordsState();
 }
 
-class _ViewRecordPageState extends State<ViewRecordPage> {
+class _ViewRecordsState extends State<ViewRecords> {
   @override
   Widget build(BuildContext context) {
     return Container(

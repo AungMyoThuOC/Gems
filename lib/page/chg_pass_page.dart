@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ChgPassPage extends StatefulWidget {
-  const ChgPassPage({Key? key}) : super(key: key);
+// ignore: camel_case_types
+class Change_Password extends StatefulWidget {
+  const Change_Password({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
-  _ChgPassPageState createState() => _ChgPassPageState();
+  _Change_PasswordState createState() => _Change_PasswordState();
 }
 
-class _ChgPassPageState extends State<ChgPassPage> {
+class _Change_PasswordState extends State<Change_Password> {
   @override
   Widget build(BuildContext context) {
     return Container(
