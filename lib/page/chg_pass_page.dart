@@ -9,12 +9,51 @@ class Change_Password extends StatefulWidget {
   _Change_PasswordState createState() => _Change_PasswordState();
 }
 
+// ignore: camel_case_types
 class _Change_PasswordState extends State<Change_Password> {
+  TextEditingController chgpassCon = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(
-        child: Text("Change Password Page"),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(130.0),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          elevation: 0.0,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(100.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: chgpassCon,
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 30,
+                    child: ElevatedButton(
+                      onPressed: (){}, 
+                      child: Text(
+                        "Save"
+                      )
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
