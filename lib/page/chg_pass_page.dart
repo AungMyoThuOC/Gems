@@ -29,12 +29,12 @@ class _Change_PasswordState extends State<Change_Password> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     controller: chgpassCon,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Password",
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -44,7 +44,7 @@ class _Change_PasswordState extends State<Change_Password> {
                     height: 30,
                     child: ElevatedButton(
                       onPressed: (){}, 
-                      child: Text(
+                      child: const Text(
                         "Save"
                       )
                     ),
