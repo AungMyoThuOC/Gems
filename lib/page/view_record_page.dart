@@ -9,11 +9,40 @@ class ViewRecords extends StatefulWidget {
 }
 
 class _ViewRecordsState extends State<ViewRecords> {
+  TextEditingController userinput = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Center(
-        child: Text("View All Record"),
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(100.0),
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          elevation: 0.0,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(80.0),
+            child: Container(
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "Search....",
+                      hintStyle: TextStyle(
+                        color: Colors.grey
+                      ),
+                        enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.grey,
+                        width: 2.0,
+                      ),
+                    )),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

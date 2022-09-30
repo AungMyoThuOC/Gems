@@ -61,6 +61,13 @@ class _MainPageState extends State<MainPage> {
           child: Container(
             child: Column(
               children: [
+                Text(
+                  "Menu",
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 MyDrawerList(),
               ],
             ),
