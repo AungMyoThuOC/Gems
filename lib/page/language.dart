@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class Language extends StatefulWidget {
@@ -15,34 +13,61 @@ class _LanguageState extends State<Language> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
+        preferredSize: const Size.fromHeight(130.0),
         child: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           elevation: 0.0,
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(100.0),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text("English"),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Divider(),
-                  TextButton(
-                    onPressed: () {},
-                     child: Text("Myanmar")
+              preferredSize: const Size.fromHeight(100.0),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Image(
+                          width: 30,
+                          height: 30,
+                          image: AssetImage(
+                            "images/English.png",
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text("English"),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Divider(),
+                    Row(
+                      children: [
+                        const Image(
+                          width: 30,
+                          height: 30,
+                          image: AssetImage(
+                            "images/Myanmar.png",
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        TextButton(
+                          onPressed: () {}, 
+                          child: const Text("Myanmar")
+                        ),
+                      ],
                     )
-                ],
-              ),
-            )
-          ),
+                  ],
+                ),
+              )),
         ),
       ),
     );
