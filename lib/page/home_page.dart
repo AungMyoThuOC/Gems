@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gems_records/page/new_rec_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -36,19 +37,12 @@ class _HomeState extends State<Home> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
-                      width: 1,
-                      color: Color.fromARGB(225, 224, 224, 244)
-                    ),
+                        width: 1, color: Color.fromARGB(225, 224, 224, 244)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(5),
-                    borderSide: const BorderSide(
-                      width: 1,
-                      color: Color.fromARGB(
-                        255, 177, 177, 177
-                      )
-                    )
-                  ),
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: const BorderSide(
+                          width: 1, color: Color.fromARGB(255, 177, 177, 177))),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child: IconButton(
@@ -79,7 +73,10 @@ class _HomeState extends State<Home> {
               width: 45,
               child: FloatingActionButton(
                 elevation: 0,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => const NewRecod()));
+                },
                 splashColor: Colors.red,
                 child: const Icon(
                   Icons.add,

@@ -61,7 +61,7 @@ class _MainPageState extends State<MainPage> {
           child: Container(
             child: Column(
               children: [
-                Text(
+                const Text(
                   "Menu",
                   textAlign: TextAlign.center,
                 ),

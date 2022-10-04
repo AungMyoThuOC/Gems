@@ -10,7 +10,7 @@ class ViewRecords extends StatefulWidget {
 
 class _ViewRecordsState extends State<ViewRecords> {
   TextEditingController userinput = TextEditingController();
-  List<String> items = <String>["Datetime", "Type", "FromWhome", "Cancel"];
+  List<String> items = <String>["Datetime", "Type", "FromWhom", "Cancel"];
 
   String dropdownValue = "Type";
 
