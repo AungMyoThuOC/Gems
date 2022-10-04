@@ -10,12 +10,15 @@ class ViewRecords extends StatefulWidget {
 
 class _ViewRecordsState extends State<ViewRecords> {
   TextEditingController userinput = TextEditingController();
+  List<String> items = <String>["Datetime", "Type", "FromWhome", "Cancel"];
+
+  String dropdownValue = "Type";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100.0),
+        preferredSize: const Size.fromHeight(130.0),
         child: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
@@ -23,21 +26,41 @@ class _ViewRecordsState extends State<ViewRecords> {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(80.0),
             child: Container(
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Search....",
-                      hintStyle: TextStyle(
-                        color: Colors.grey
+                  Container(
+                    width: 350,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                            hintText: "Search....",
+                            hintStyle: TextStyle(color: Colors.grey),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Colors.grey,
+                                width: 2.0,
+                              ),
+                            )),
                       ),
-                        enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.grey,
-                        width: 2.0,
-                      ),
-                    )),
+                    ),
                   ),
+                  Container(
+                      width: 120,
+                      child: DropdownButton<String>(
+                        value: dropdownValue,
+                        items:
+                            items.map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                              value: value, child: Text(value));
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            dropdownValue = newValue ?? '';
+                          });
+                        },
+                      ))
                 ],
               ),
             ),
