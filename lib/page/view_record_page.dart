@@ -25,10 +25,12 @@ class _ViewRecordsState extends State<ViewRecords> {
           elevation: 0.0,
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(80.0),
+            // ignore: avoid_unnecessary_containers
             child: Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                  // ignore: sized_box_for_whitespace
                   Container(
                     width: 350,
                     child: Padding(
@@ -46,6 +48,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                       ),
                     ),
                   ),
+                  // ignore: sized_box_for_whitespace
                   Container(
                       width: 120,
                       child: DropdownButton<String>(

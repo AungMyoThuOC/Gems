@@ -36,6 +36,7 @@ class _NewRecodState extends State<NewRecod> {
 
       setState(() => this.image = imageTemp);
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print("Failed to pick image: $e");
     }
   }
@@ -49,6 +50,7 @@ class _NewRecodState extends State<NewRecod> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -68,6 +70,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -86,6 +89,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -104,6 +108,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -125,6 +130,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -143,6 +149,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -173,6 +180,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -191,6 +199,7 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            // ignore: avoid_unnecessary_containers
             Container(
               child: Column(
                 children: [
@@ -292,6 +301,7 @@ class _NewRecodState extends State<NewRecod> {
             const SizedBox(
               height: 10,
             ),
+            // ignore: sized_box_for_whitespace
             Container(
               width: double.infinity,
               height: 50,

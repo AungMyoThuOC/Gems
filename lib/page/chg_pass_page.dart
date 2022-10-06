@@ -39,6 +39,7 @@ class _Change_PasswordState extends State<Change_Password> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  // ignore: sized_box_for_whitespace
                   child: Container(
                     width: double.infinity,
                     height: 30,

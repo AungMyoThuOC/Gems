@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
