@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
                 elevation: 0,
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => const NewRecod()));
+                      MaterialPageRoute(builder: (context) =>  NewRecod(onSubmit: (String value) {  },)));
                 },
                 splashColor: Colors.red,
                 child: const Icon(

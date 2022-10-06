@@ -5,10 +5,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gems_records/page/home_page.dart';
 import 'package:image_picker/image_picker.dart';
 
 class NewRecod extends StatefulWidget {
-  const NewRecod({Key? key}) : super(key: key);
+  const NewRecod({Key? key, required this.onSubmit}) : super(key: key);
+
+  final ValueChanged<String> onSubmit;
 
   @override
   State<NewRecod> createState() => _NewRecodState();
@@ -41,15 +44,146 @@ class _NewRecodState extends State<NewRecod> {
     }
   }
 
+  bool submitted = false;
+
+  void type() {
+    setState(() => submitted = true);
+    if (_typeText == null) {
+      widget.onSubmit(typecont.value.text);
+    }
+  }
+
+  void weight() {
+    setState(() => submitted = true);
+
+    if (_weightText == null) {
+      widget.onSubmit(weightcont.value.text);
+    }
+  }
+
+  void price() {
+    setState(() => submitted = true);
+
+    if (_priceText == null) {
+      widget.onSubmit(pricecont.value.text);
+    }
+  }
+
+  void fromwhom() {
+    setState(() => submitted = true);
+
+    if (_fromwhomText == null) {
+      widget.onSubmit(whomcont.value.text);
+    }
+  }
+
+  void phone() {
+    setState(() => submitted = true);
+
+    if (_phoneText == null) {
+      widget.onSubmit(phonecont.value.text);
+    }
+  }
+
+  void remark() {
+    setState(() => submitted = true);
+
+    if (_remarkText == null) {
+      widget.onSubmit(remarkcont.value.text);
+    }
+  }
+
+  @override
+  void deactivate() {
+    typecont.dispose();
+    weightcont.dispose();
+    pricecont.dispose();
+    whomcont.dispose();
+    phonecont.dispose();
+    remarkcont.dispose();
+
+    super.deactivate();
+  }
+
+  String? get _typeText {
+    final text = typecont.value.text;
+
+    if (text.isEmpty) {
+      return "can't be empty";
+    }
+    return null;
+  }
+
+  String? get _weightText {
+    final text = weightcont.value.text;
+
+    if (text.isEmpty) {
+      return "can't be empty";
+    }
+    return null;
+  }
+
+  String? get _priceText {
+    final text = pricecont.value.text;
+
+    if (text.isEmpty) {
+      return "can't be empty";
+    }
+    return null;
+  }
+
+  String? get _fromwhomText {
+    final text = whomcont.value.text;
+
+    if (text.isEmpty) {
+      return "can't be empty";
+    }
+    return null;
+  }
+
+  String? get _phoneText {
+    final text = phonecont.value.text;
+
+    if (text.isEmpty) {
+      return "can't be empty";
+    }
+    return null;
+  }
+
+  String? get _remarkText {
+    final text = remarkcont.value.text;
+
+    if (text.isEmpty) {
+      return "can't be empty";
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.red,
-      // ),
+      appBar: AppBar(
+        leading: IconButton(
+          splashRadius: 3,
+          onPressed: () {
+            // Navigator.popAndPushNamed(context, '/home');
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => const Home()));
+            // Navigator.of(context).pushReplacement(
+            //     MaterialPageRoute(builder: (context) => const Home()));
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
+        title: const Text("NewRecod"),
+        centerTitle: true,
+        backgroundColor: Colors.red,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
@@ -70,6 +204,9 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
@@ -79,15 +216,23 @@ class _NewRecodState extends State<NewRecod> {
                   children: [
                     const Text("Type"),
                     TextFormField(
+                      autovalidateMode: submitted
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
                       keyboardType: TextInputType.text,
                       controller: typecont,
-                      decoration: const InputDecoration(
-                          // labelText: "Type",
-                          ),
+                      decoration: InputDecoration(
+                        // labelText: "Type",
+                        errorText: _typeText,
+                      ),
+                      onChanged: (text) => setState(() => text),
                     ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             // ignore: avoid_unnecessary_containers
             Container(
@@ -98,15 +243,23 @@ class _NewRecodState extends State<NewRecod> {
                   children: [
                     const Text("Weight"),
                     TextFormField(
+                      autovalidateMode: submitted
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
                       keyboardType: TextInputType.text,
                       controller: weightcont,
-                      decoration: const InputDecoration(
-                          // labelText: "Type",
-                          ),
+                      decoration: InputDecoration(
+                        errorText: _weightText,
+                        // labelText: "Type",
+                      ),
+                      onChanged: (text) => setState(() => text),
                     ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             // ignore: avoid_unnecessary_containers
             Container(
@@ -117,18 +270,26 @@ class _NewRecodState extends State<NewRecod> {
                   children: [
                     const Text("Price"),
                     TextFormField(
+                      autovalidateMode: submitted
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
                       keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
+                      // inputFormatters: <TextInputFormatter>[
+                      //   FilteringTextInputFormatter.digitsOnly
+                      // ],
                       controller: pricecont,
-                      decoration: const InputDecoration(
-                          // labelText: "Type",
-                          ),
+                      decoration: InputDecoration(
+                        errorText: _priceText,
+                        // labelText: "Type",
+                      ),
+                      onChanged: (text) => setState(() => text),
                     ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             // ignore: avoid_unnecessary_containers
             Container(
@@ -139,15 +300,23 @@ class _NewRecodState extends State<NewRecod> {
                   children: [
                     const Text("From Whom"),
                     TextFormField(
+                      autovalidateMode: submitted
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
                       keyboardType: TextInputType.text,
                       controller: whomcont,
-                      decoration: const InputDecoration(
-                          // labelText: "Type",
-                          ),
+                      decoration: InputDecoration(
+                        errorText: _fromwhomText,
+                        // labelText: "Type",
+                      ),
+                      onChanged: (text) => setState(() => text),
                     ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             // ignore: avoid_unnecessary_containers
             Container(
@@ -158,14 +327,18 @@ class _NewRecodState extends State<NewRecod> {
                   children: [
                     const Text("Phone"),
                     TextFormField(
+                      autovalidateMode: submitted
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
                       keyboardType: TextInputType.phone,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.digitsOnly
                       ],
                       controller: phonecont,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(errorText: _phoneText
                           // labelText: "Type",
                           ),
+                      onChanged: (text) => setState(() => text),
                       validator: (value) {
                         if (value!.isEmpty ||
                             !RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')
@@ -180,6 +353,9 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             // ignore: avoid_unnecessary_containers
             Container(
               child: Padding(
@@ -189,15 +365,23 @@ class _NewRecodState extends State<NewRecod> {
                   children: [
                     const Text("Remark"),
                     TextFormField(
+                      autovalidateMode: submitted
+                          ? AutovalidateMode.onUserInteraction
+                          : AutovalidateMode.disabled,
                       keyboardType: TextInputType.text,
                       controller: remarkcont,
-                      decoration: const InputDecoration(
-                          // labelText: "Type",
-                          ),
+                      decoration: InputDecoration(
+                        errorText: _remarkText,
+                        // labelText: "Type",
+                      ),
+                      onChanged: (text) => setState(() => text),
                     ),
                   ],
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             // ignore: avoid_unnecessary_containers
             Container(
@@ -308,7 +492,13 @@ class _NewRecodState extends State<NewRecod> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      submitted = true;
+                    });
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => const Home()));
+                  },
                   child: const Text("Save"),
                 ),
               ),

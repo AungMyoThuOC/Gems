@@ -25,6 +25,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Gems Records',
+      // initialRoute: '/',
+      // routes: {
+      //   '/' :(context) =>  MainPage(),
+      //   '/home' :(context) => const Home(),
+      // },
       home: MainPage(),
     );
   }
