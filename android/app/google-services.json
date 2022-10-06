@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "90888433148",
+    "project_id": "gem-record",
+    "storage_bucket": "gem-record.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90888433148:android:89dc813025dc4c57035679",
+        "android_client_info": {
+          "package_name": "com.example.gems_records"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90888433148-9usk82sd242iuplebl4gqht09h9e60fn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaIgkcjAt0mYuZ81muTjQ-n2envwO7XzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90888433148-9usk82sd242iuplebl4gqht09h9e60fn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
