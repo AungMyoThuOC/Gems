@@ -1,7 +1,11 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, deprecated_member_use
+
+// import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 class NewRecod extends StatefulWidget {
   const NewRecod({Key? key}) : super(key: key);
@@ -19,6 +23,23 @@ class _NewRecodState extends State<NewRecod> {
   TextEditingController whomcont = TextEditingController();
   TextEditingController phonecont = TextEditingController();
   TextEditingController remarkcont = TextEditingController();
+
+  File? image;
+
+  Future pickImageC() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print("Failed to pick image: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -170,6 +191,118 @@ class _NewRecodState extends State<NewRecod> {
                 ),
               ),
             ),
+            Container(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                      MaterialButton(
+                        child: const Icon(
+                          Icons.camera_enhance,
+                          size: 200,
+                        ),
+                        onPressed: () {
+                          pickImageC();
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: double.infinity,
+              height: 50,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RaisedButton(
+                  onPressed: () {},
+                  child: const Text("Save"),
+                ),
+              ),
+            )
           ],
         ),
       ),
