@@ -20,5 +20,5 @@
     "c_r_t_n_a_t_p_n_o_s" : "Can record the name and the phone number of seller",
     "c_r_t_w_a_d_o_t_g_s_a_w_a_t_f_a_t_s" : "Can record type, weight, accepted date of the gem stone as well as the facts about that stone",
     "c_s_f_r_g_s_w_d_s_n_a_g_s_t" : "Can search for record gem stones with date, seller's name and gem stone's type",
-    "c_e_a_d_t_r_g_s" : "Can edit and delete the recorded gem stones",
+    "c_e_a_d_t_r_g_s" : "Can edit and delete the recorded gem stones"
 }

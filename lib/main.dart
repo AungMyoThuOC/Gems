@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_unnecessary_containers
 
+// import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
@@ -8,6 +11,7 @@ import 'package:gems_records/page/language.dart';
 import 'package:gems_records/page/view_record_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,23 +21,62 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Gems Records',
-      // initialRoute: '/',
-      // routes: {
-      //   '/' :(context) =>  MainPage(),
-      //   '/home' :(context) => const Home(),
-      // },
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      onGenerateRoute: CustomRouter.generatedRoute,
+      initialRoute: homeRoute,
+      locale: _locale,
       home: MainPage(),
     );
   }
 }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   Locale? _locale;
+
+//   setLocale(Locale locale) {
+//     setState()
+//   }
+
+//   @override
+//   void didChangeDependencies() {
+//     getLocale().then((locale) => {setLocale(locale)});
+//     super.didChangeDependencies();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Gems Records',
+//       localizationsDelegates: AppLocalizations.localizationsDelegates,
+//       supportedLocales: AppLocalizations.supportedLocales,
+//       onGenerateRoute: CustomRouter.generatedRoute,
+//       initialRoute: homeRoute,
+//       locale: _locale,
+//       // initialRoute: '/',
+//       // routes: {
+//       //   '/' :(context) =>  MainPage(),
+//       //   '/home' :(context) => const Home(),
+//       // },
+//       home: MainPage(),
+//     );
+//   }
+// }
 
 // ignore: use_key_in_widget_constructors
 class MainPage extends StatefulWidget {
@@ -45,6 +88,12 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  // @override
+  // void didChangeDependencies() {
+  //   getLocale().then((locale) => {setLocale(locale)});
+  //   super.didChangeDependencies();
+  // }
+
   var currentPage = DrawerSections.home;
 
   @override
