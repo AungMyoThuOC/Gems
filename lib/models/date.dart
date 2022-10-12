@@ -2,16 +2,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Date {
   DateTime date;
-  String? autoId;
+  String? autoID;
 
   Date({required this.date});
 
   factory Date.fromJson(Map<String, dynamic> json) => _dateFromJson(json);
 
   factory Date.fromSnapshot(DocumentSnapshot snapshot) {
-    final newRecod = Date.fromJson(snapshot.data() as Map<String, dynamic>);
-    newRecod.autoId = snapshot.reference.id;
-    return newRecod;
+    final newDate = Date.fromJson(snapshot.data() as Map<String, dynamic>);
+    newDate.autoID = snapshot.reference.id;
+    
+    return newDate;
   }
 
   Map<String, dynamic> toJson() => _dateToJson(this);

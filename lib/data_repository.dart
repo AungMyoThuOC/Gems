@@ -4,7 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'models/date.dart';
+import 'models/fromWhom.dart';
+import 'models/phone.dart';
+import 'models/price.dart';
+import 'models/remark.dart';
 import 'models/type.dart';
+import 'models/weight.dart';
 
 class DataRepository {
   CollectionReference ref = FirebaseFirestore.instance.collection("gem");

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Type {
   String type;
-  String? autoId;
+  String? autoID;
 
   Type({
     required this.type,
@@ -11,10 +11,11 @@ class Type {
   factory Type.fromJson(Map<String, dynamic> json) => _typeFromJson(json);
 
   factory Type.fromSnapshot(DocumentSnapshot snapshot) {
-    final newRecod = Type.fromJson(snapshot.data() as Map<String, dynamic>);
+    final newType = Type.fromJson(snapshot.data() as Map<String, dynamic>);
 
-    newRecod.autoId = snapshot.reference.id;
-    return newRecod;
+    newType.autoID = snapshot.reference.id;
+    
+    return newType;
   }
 
   Map<String, dynamic> toJson() => _typeToJson(this);
