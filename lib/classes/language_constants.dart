@@ -13,12 +13,14 @@ const String ENGLISH = 'en';
 const String Myanmar = 'my';
 
 Future<Locale> setLocale(String languageCode) async {
+  // ignore: no_leading_underscores_for_local_identifiers
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   await _prefs.setString(LAGUAGE_CODE, languageCode);
   return _locale(languageCode);
 }
 
 Future<Locale> getLocale() async {
+  // ignore: no_leading_underscores_for_local_identifiers
   SharedPreferences _prefs = await SharedPreferences.getInstance();
   String languageCode = _prefs.getString(LAGUAGE_CODE) ?? ENGLISH;
   return _locale(languageCode);
