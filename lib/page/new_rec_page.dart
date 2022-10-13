@@ -2,11 +2,19 @@
 
 // import 'dart:html';
 import 'dart:io';
+import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gems_records/data_repository.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:gems_records/models/category.dart';
+import 'dart:core';
 
 class NewRecod extends StatefulWidget {
   const NewRecod({Key? key, required this.onSubmit}) : super(key: key);
@@ -28,6 +36,10 @@ class _NewRecodState extends State<NewRecod> {
   TextEditingController remarkcont = TextEditingController();
 
   File? image;
+  bool checkDelete = false;
+  int result = 0;
+  String catName = '';
+  String resultType = '';
 
   Future pickImageC() async {
     try {
@@ -485,6 +497,74 @@ class _NewRecodState extends State<NewRecod> {
             const SizedBox(
               height: 10,
             ),
+            Container(
+              width: 400,
+              height: 200,
+              child: StreamBuilder<QuerySnapshot>(
+                stream: DataRepository().getCategory(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) return const LinearProgressIndicator();
+
+                  return GridView.count(
+                      scrollDirection: Axis.horizontal,
+                      addAutomaticKeepAlives: true,
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics()),
+                      crossAxisCount: 2,
+                      children: snapshot.data!.docs
+                          .map(
+                            (e) => StreamBuilder<QuerySnapshot>(
+                                stream: DataRepository().getType(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const CircularProgressIndicator();
+                                  }
+                                  var ds = snapshot.data!.docs;
+
+                                  List sum = [];
+
+                                  for (int i = 0; i < ds.length; i++) {
+                                    sum.add(ds[i]['catName']);
+                                  }
+
+                                  return MyCategory(
+                                    delete: checkDelete,
+                                    onClicked: (state, name) {
+                                      setState(() {
+                                        result = state;
+                                        catName = name;
+                                      });
+                                    },
+                                    category: Category.fromSnapshot(e),
+                                    deleteClick: (autoID, name) {
+                                      if (sum.isEmpty) {
+                                        DataRepository().deleteCategory(autoID);
+                                      } else {
+                                        for (int i = 0; i < sum.length; i++) {
+                                          setState(() {
+                                            resultType = name;
+                                          });
+                                          if (resultType == sum[i]) {
+                                            showTopSnackBar(
+                                                context,
+                                                const CustomSnackBar.error(
+                                                    message: ""));
+                                          } else {
+                                            DataRepository()
+                                                .deleteCategory(autoID);
+                                          }
+                                        }
+                                      }
+                                    },
+                                  );
+                                }),
+                          )
+                          .toList());
+                },
+              ),
+            ),
             // ignore: sized_box_for_whitespace
             Container(
               width: double.infinity,
@@ -493,6 +573,9 @@ class _NewRecodState extends State<NewRecod> {
                 padding: const EdgeInsets.all(8.0),
                 child: RaisedButton(
                   onPressed: () {
+                    if (catName == '') {
+                      catName = "type";
+                    }
                     setState(() {
                       submitted = true;
                     });
@@ -528,4 +611,48 @@ class _NewRecodState extends State<NewRecod> {
         firstDate: DateTime(1900),
         lastDate: DateTime(2100),
       );
+}
+
+class MyCategory extends StatefulWidget {
+  MyCategory(
+      {Key? key,
+      required this.category,
+      required this.onClicked,
+      required this.delete,
+      required this.deleteClick})
+      : super(key: key);
+
+  final Category category;
+  final Function onClicked;
+  final Function deleteClick;
+  bool delete = false;
+
+  @override
+  State<MyCategory> createState() => _MyCategoryState();
+}
+
+class _MyCategoryState extends State<MyCategory> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          CircleAvatar(
+              radius: 25,
+              child: TextButton(
+                  onPressed: (widget.delete == false)
+                      ? () {
+                          widget.onClicked(widget.category.name);
+                        }
+                      : () {
+                          widget.deleteClick(widget.category.name);
+                        },
+                  child: Text(
+                    widget.category.name,
+                    style: const TextStyle(fontSize: 14),
+                  )))
+        ],
+      ),
+    );
+  }
 }

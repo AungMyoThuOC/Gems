@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:gems_records/models/category.dart';
 import 'models/date.dart';
 import 'models/from_whom.dart';
 import 'models/phone.dart';
@@ -10,17 +11,27 @@ import 'models/price.dart';
 import 'models/remark.dart';
 import 'models/type.dart';
 import 'models/weight.dart';
+import 'models/category.dart';
 
 class DataRepository {
   CollectionReference ref = FirebaseFirestore.instance.collection("gem");
-  CollectionReference reference = FirebaseFirestore.instance.collection("record");
+  CollectionReference reference =
+      FirebaseFirestore.instance.collection("record");
   Future userData(String email) async {
     return await ref.doc(email).set({
       "email": FirebaseAuth.instance.currentUser!.email,
     });
   }
 
-  Future updateuserDate(String date) async {
+  Future updateUserCategory(String category) async {
+    return await ref
+        .doc(FirebaseAuth.instance.currentUser!.email)
+        .collection('category')
+        .doc()
+        .set({'category': FirebaseAuth.instance.currentUser!.email});
+  }
+
+  Future updateUserDate(String date) async {
     return await ref
         .doc(FirebaseAuth.instance.currentUser!.email)
         .collection('date')
@@ -78,7 +89,14 @@ class DataRepository {
 
   final CollectionReference collection =
       FirebaseFirestore.instance.collection('gem');
-  
+
+  Stream<QuerySnapshot> getAddCategory() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('category')
+        .snapshots();
+  }
+
   Stream<QuerySnapshot> getAddDate() {
     return ref
         .doc('${FirebaseAuth.instance.currentUser!.email}')
@@ -128,10 +146,17 @@ class DataRepository {
         .snapshots();
   }
 
+  Future<DocumentReference> addCategory(Category category) async {
+    return await ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('Category')
+        .add(category.toJson());
+  }
+
   Future<DocumentReference> addDate(Date date) async {
     return await ref
         .doc('${FirebaseAuth.instance.currentUser!.email}')
-        .collection('Type')
+        .collection('Date')
         .add(date.toJson());
   }
 
@@ -177,10 +202,83 @@ class DataRepository {
         .add(remark.toJson());
   }
 
+  Stream<QuerySnapshot> getCategory() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getDate() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getType() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getWeight() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getPrice() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getFromWhom() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getPhoneNo() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getRemark() {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('record')
+        .where('record', isEqualTo: true)
+        .snapshots();
+  }
+
+  Future updateCategory(String id, Category category) async {
+    return await ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('category')
+        .doc(id)
+        .update(category.toJson());
+  }
+
+
   Future updateDate(String id, Date date) async {
     return await ref
         .doc('${FirebaseAuth.instance.currentUser!.email}')
-        .collection('Type')
+        .collection('date')
         .doc(id)
         .update(date.toJson());
   }
@@ -231,6 +329,14 @@ class DataRepository {
         .collection('Remark')
         .doc(id)
         .update(remark.toJson());
+  }
+
+  Future deleteCategory(String id) async {
+    return ref
+        .doc('${FirebaseAuth.instance.currentUser!.email}')
+        .collection('Category')
+        .doc(id)
+        .delete();
   }
 
   Future deleteDate(String id) async {
