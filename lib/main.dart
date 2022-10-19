@@ -10,16 +10,14 @@ import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:gems_records/page/language.dart';
 import 'package:gems_records/page/view_record_page.dart';
-import 'package:firebase_core/firebase_core.dart';
 // import 'package:provider/provider.dart';
-import 'firebase_options.dart';
 // import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(const MyApp());
 }
 
