@@ -24,7 +24,7 @@ class CustomRouter {
       case newrecRoute:
         return MaterialPageRoute(
             builder: (_) => NewRecod(
-                  onSubmit: (String value) {},
+                  onSubmit: (String value) {}, onSave: () {  },
                 ));
       default:
         return MaterialPageRoute(builder: (_) => const NotFoundPage());

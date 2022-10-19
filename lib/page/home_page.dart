@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gems_records/page/new_rec_page.dart';
+import 'package:gems_records/data/database.dart';
+// import 'package:gems_records/page/new_rec_page.dart';
+import 'package:gems_records/util/dialog_box.dart';
+import 'package:gems_records/util/todo_tile.dart';
+import 'package:hive/hive.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,6 +16,47 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   TextEditingController sercontr = TextEditingController();
   bool bottomNavigator = true;
+
+  final typecont = TextEditingController();
+
+  final _myBox = Hive.box('mybox');
+  ToDoDataBase db = ToDoDataBase();
+
+  @override
+  void initState() {
+    if (_myBox.get("TODOLIST") == null) {
+      db.createInitialData();
+    } else {
+      db.loadData();
+    }
+    
+    super.initState();
+  }
+
+  void saveNewTask() {
+    setState(() {
+      db.toDoList.add([typecont.text, false]);
+      typecont.clear();
+    });
+    Navigator.of(context).pop();
+    db.updateDataBase();
+  }
+
+  void createNewTask() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return DialogBox(controller: typecont, onSave: saveNewTask);
+        });
+  }
+
+  void deleteTask(int index) {
+    setState(() {
+      db.toDoList.removeAt(index);
+    });
+    db.updateDataBase();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,10 +118,14 @@ class _HomeState extends State<Home> {
               width: 45,
               child: FloatingActionButton(
                 elevation: 0,
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) =>  NewRecod(onSubmit: (String value) {  },)));
-                },
+                onPressed: createNewTask,
+                // () {
+                //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //       builder: (context) => NewRecod(
+                //             onSubmit: (String value) {},
+                //             onSave: () {},
+                //           )));
+                // },
                 splashColor: Colors.red,
                 child: const Icon(
                   Icons.add,
@@ -86,6 +135,14 @@ class _HomeState extends State<Home> {
             )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: ListView.builder(
+        itemCount: db.toDoList.length,
+        itemBuilder: (context, index) {
+          return ToDoTile(
+              taskName: db.toDoList[index][0],
+              deleteFunction: (context) => deleteTask(index));
+        },
+      ),
     );
   }
 }
