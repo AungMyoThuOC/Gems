@@ -18,6 +18,11 @@ class _HomeState extends State<Home> {
   bool bottomNavigator = true;
 
   final typecont = TextEditingController();
+  final weightcont = TextEditingController();
+  final pricecont = TextEditingController();
+  final fromwhomcont = TextEditingController();
+  final phonecont = TextEditingController();
+  final remarkcont = TextEditingController();
 
   final _myBox = Hive.box('mybox');
   ToDoDataBase db = ToDoDataBase();
@@ -29,7 +34,7 @@ class _HomeState extends State<Home> {
     } else {
       db.loadData();
     }
-    
+
     super.initState();
   }
 
@@ -37,6 +42,11 @@ class _HomeState extends State<Home> {
     setState(() {
       db.toDoList.add([typecont.text, false]);
       typecont.clear();
+      weightcont.clear();
+      pricecont.clear();
+      fromwhomcont.clear();
+      phonecont.clear();
+      remarkcont.clear();
     });
     Navigator.of(context).pop();
     db.updateDataBase();
@@ -46,7 +56,16 @@ class _HomeState extends State<Home> {
     showDialog(
         context: context,
         builder: (context) {
-          return DialogBox(controller: typecont, onSave: saveNewTask);
+          return DialogBox(
+            typecont: typecont,
+            weightcont: weightcont,
+            pricecont: pricecont,
+            whomcont: fromwhomcont,
+            phonecont: phonecont,
+            remarkcont: remarkcont,
+            onSave: saveNewTask,
+            // onSubmit: (String value) {  },
+          );
         });
   }
 
