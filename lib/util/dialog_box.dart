@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_unnecessary_containers, sized_box_for_whitespace
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gems_records/util/my_button.dart';
+// import 'package:image_picker/image_picker.dart';
 
 // ignore: must_be_immutable
 class DialogBox extends StatelessWidget {
@@ -21,8 +24,26 @@ class DialogBox extends StatelessWidget {
       required this.whomcont,
       required this.phonecont,
       required this.remarkcont,
+      // required this.image,
       required this.onSave})
       : super(key: key);
+
+  // File image;
+
+  // Future pickImageC() async {
+  //   try {
+  //     final image = await ImagePicker().pickImage(source: ImageSource.camera);
+
+  //     if (image == null) return;
+
+  //     final imageTemp = File(image.path);
+
+  //     setState(() => this.image = imageTemp);
+  //   } on PlatformException catch (e) {
+  //     // ignore: avoid_print
+  //     print("Failed to pick image: $e");
+  //   }
+  // }
 
   // bool submitted = false;
 
@@ -156,11 +177,10 @@ class DialogBox extends StatelessWidget {
                                   return null;
                                 },
                                 decoration: const InputDecoration(
-                                    labelText: "Weight", 
-                                    hintText: "Weight"
+                                    labelText: "Weight", hintText: "Weight"
                                     // errorText: _weightText,
                                     // labelText: "Type",
-                                  ),
+                                    ),
                                 // onChanged: (text) => setState(() => text),
                               ),
                             ],
@@ -205,11 +225,10 @@ class DialogBox extends StatelessWidget {
                                 //   }
                                 // },
                                 decoration: const InputDecoration(
-                                    labelText: "Price", 
-                                    hintText: "Price"
+                                    labelText: "Price", hintText: "Price"
                                     // errorText: _priceText,
                                     // labelText: "Type",
-                                  ),
+                                    ),
                                 // onChanged: (text) => setState(() => text),
                               ),
                             ],
@@ -245,7 +264,7 @@ class DialogBox extends StatelessWidget {
                                     hintText: "From Whom"
                                     // errorText: _fromwhomText,
                                     // labelText: "Type",
-                                  ),
+                                    ),
                                 // onChanged: (text) => setState(() => text),
                               ),
                             ],
@@ -274,9 +293,7 @@ class DialogBox extends StatelessWidget {
                                 ],
                                 controller: phonecont,
                                 decoration: const InputDecoration(
-                                    labelText: "Phone", 
-                                    hintText: "Phone"
-                                  ),
+                                    labelText: "Phone", hintText: "Phone"),
                                 // decoration:
                                 //     InputDecoration(errorText: _phoneText
                                 //         // labelText: "Type",
@@ -321,11 +338,10 @@ class DialogBox extends StatelessWidget {
                                   return null;
                                 },
                                 decoration: const InputDecoration(
-                                    labelText: "Remark", 
-                                    hintText: "Remark"
+                                    labelText: "Remark", hintText: "Remark"
                                     // errorText: _remarkText,
                                     // labelText: "Type",
-                                  ),
+                                    ),
                                 //  onChanged: (text) => setState(() => text),
                               ),
                             ],
@@ -346,4 +362,6 @@ class DialogBox extends StatelessWidget {
       ),
     );
   }
+  
+  void setState(File Function() param0) {}
 }

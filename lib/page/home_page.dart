@@ -63,7 +63,9 @@ class _HomeState extends State<Home> {
             whomcont: fromwhomcont,
             phonecont: phonecont,
             remarkcont: remarkcont,
-            onSave: saveNewTask,
+            onSave: saveNewTask, 
+            // ignore: null_check_always_fails
+            // image: null!, 
             // onSubmit: (String value) {  },
           );
         });
