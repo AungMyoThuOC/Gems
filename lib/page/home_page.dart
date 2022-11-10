@@ -17,12 +17,12 @@ class _HomeState extends State<Home> {
   TextEditingController sercontr = TextEditingController();
   bool bottomNavigator = true;
 
-  final typecont = TextEditingController();
-  final weightcont = TextEditingController();
-  final pricecont = TextEditingController();
-  final fromwhomcont = TextEditingController();
-  final phonecont = TextEditingController();
-  final remarkcont = TextEditingController();
+  TextEditingController typecont = TextEditingController();
+  TextEditingController weightcont = TextEditingController();
+  TextEditingController pricecont = TextEditingController();
+  TextEditingController fromwhomcont = TextEditingController();
+  TextEditingController phonecont = TextEditingController();
+  TextEditingController remarkcont = TextEditingController();
 
   final _myBox = Hive.box('mybox');
   ToDoDataBase db = ToDoDataBase();
@@ -63,9 +63,9 @@ class _HomeState extends State<Home> {
             whomcont: fromwhomcont,
             phonecont: phonecont,
             remarkcont: remarkcont,
-            onSave: saveNewTask, 
+            onSave: saveNewTask,
             // ignore: null_check_always_fails
-            // image: null!, 
+            // image: null!,
             // onSubmit: (String value) {  },
           );
         });
@@ -74,6 +74,13 @@ class _HomeState extends State<Home> {
   void deleteTask(int index) {
     setState(() {
       db.toDoList.removeAt(index);
+    });
+    db.updateDataBase();
+  }
+
+  void editTask(int index) {
+    setState(() {
+      // db.toDoList.(index);
     });
     db.updateDataBase();
   }
@@ -160,14 +167,15 @@ class _HomeState extends State<Home> {
         itemCount: db.toDoList.length,
         itemBuilder: (context, index) {
           return ToDoTile(
-              taskName: db.toDoList[index][0],
-              deleteFunction: (context) => deleteTask(index));
+            taskName: db.toDoList[index][0],
+            deleteFunction: (context) => deleteTask(index),
+            editFunction: (context) => editTask(index),
+          );
         },
       ),
     );
   }
 }
-
 
 // decoration: BoxDecoration(
 //         color: Colors.white,
@@ -206,4 +214,3 @@ class _HomeState extends State<Home> {
 //           )
 //         ],
 //       ),
-
