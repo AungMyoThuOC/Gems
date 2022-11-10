@@ -18,7 +18,7 @@ class _ViewRecordsState extends State<ViewRecords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(130.0),
+        preferredSize: const Size.fromHeight(100.0),
         child: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
@@ -32,7 +32,7 @@ class _ViewRecordsState extends State<ViewRecords> {
                 children: [
                   // ignore: sized_box_for_whitespace
                   Container(
-                    width: 350,
+                    width: 250,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
@@ -48,9 +48,9 @@ class _ViewRecordsState extends State<ViewRecords> {
                       ),
                     ),
                   ),
-                  // ignore: sized_box_for_whitespace
+                  // ignore: avoid_unnecessary_containers
                   Container(
-                      width: 120,
+                      // width: 80,
                       child: DropdownButton<String>(
                         value: dropdownValue,
                         items:

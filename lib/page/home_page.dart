@@ -80,6 +80,7 @@ class _HomeState extends State<Home> {
 
   void editTask(int index) {
     setState(() {
+      db.toDoList.toSet();
       // db.toDoList.(index);
     });
     db.updateDataBase();

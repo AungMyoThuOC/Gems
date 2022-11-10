@@ -13,7 +13,7 @@ class _LanguageState extends State<Language> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(130.0),
+        preferredSize: const Size.fromHeight(150.0),
         child: AppBar(
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
