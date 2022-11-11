@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
 
   final _myBox = Hive.box('mybox');
   ToDoDataBase db = ToDoDataBase();
+  
 
   @override
   void initState() {
@@ -80,7 +81,6 @@ class _HomeState extends State<Home> {
 
   void editTask(int index) {
     setState(() {
-      db.toDoList.toSet();
       // db.toDoList.(index);
     });
     db.updateDataBase();
