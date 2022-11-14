@@ -3,7 +3,7 @@ import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:gems_records/page/language.dart';
-import 'package:gems_records/page/new_rec_page.dart';
+// import 'package:gems_records/page/new_rec_page.dart';
 import 'package:gems_records/page/view_record_page.dart';
 import 'package:gems_records/page/not_found_page.dart';
 import 'package:gems_records/router/route_constants.dart';
@@ -21,11 +21,11 @@ class CustomRouter {
         return MaterialPageRoute(builder: (_) => const Change_Password());
       case aboutRoute:
         return MaterialPageRoute(builder: (_) => const About());
-      case newrecRoute:
-        return MaterialPageRoute(
-            builder: (_) => NewRecod(
-                  onSubmit: (String value) {}, onSave: () {  },
-                ));
+      // case newrecRoute:
+      //   return MaterialPageRoute(
+      //       builder: (_) => NewRecod(
+      //             onSubmit: (String value) {}, onSave: () {  },
+      //           ));
       default:
         return MaterialPageRoute(builder: (_) => const NotFoundPage());
     }

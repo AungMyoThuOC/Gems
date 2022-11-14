@@ -1,23 +1,27 @@
-// ignore_for_file: prefer_typing_uninitialized_variables, avoid_unnecessary_containers
-
 // import 'dart:ffi';
 
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
-// import 'package:gems_records/classes/language_constants.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:gems_records/l10n/l10n.dart';
 import 'package:gems_records/my_drawer_header.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:gems_records/page/language.dart';
 import 'package:gems_records/page/view_record_page.dart';
+import 'package:gems_records/provider/locale_provider.dart';
 import 'package:hive_flutter/adapters.dart';
-// import 'package:provider/provider.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:gems_records/classes/language_constants.dart';
+import 'package:gems_records/router/custom_router.dart';
+// import 'package:gems_records/router/route_constants.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await Hive.initFlutter();
 
-  // ignore: unused_local_variable
   var box = await Hive.openBox('mybox');
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(
@@ -26,27 +30,73 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Gems Records',
-      // initialRoute: '/',
-      // routes: {
-      //   '/' :(context) =>  MainPage(),
-      //   '/home' :(context) => const Home(),
-      // },
-      home: MainPage(),
-    );
+  State<MyApp> createState() => _MyAppState();
+
+  static void setLocale(BuildContext context, Locale newLocale) {
+    _MyAppState? state = context.findAncestorStateOfType<_MyAppState>();
+    state?.setLocale(newLocale);
   }
 }
 
-// ignore: use_key_in_widget_constructors
+class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    getLocale().then((locale) => {setLocale(locale)});
+    super.didChangeDependencies();
+  }
+
+  @override
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+      create: (context) => LocaleProvider(),
+      builder: (context, child) {
+        final provider = Provider.of<LocaleProvider>(context);
+        return MaterialApp(
+          title: "Gems Records",
+          debugShowCheckedModeBanner: false,
+          // localizationsDelegates: AppLocalizations.localizationsDelegates,
+          // supportedLocales: AppLocalizations.supportedLocales,
+          // onGenerateRoute: CustomRouter.generatedRoute,
+          // initialRoute: homeRoute,
+          supportedLocales: L10n.all,
+          locale: provider.locale,
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          home: const MainPage(),
+        );
+      });
+}
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return const MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Gems Records',
+//       home: MainPage(),
+//     );
+//   }
+// }
+
 class MainPage extends StatefulWidget {
-  // const MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -54,16 +104,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  // @override
-  // void didChangeDependencies() {
-  //   getLocale().then((locale) => {setLocale(locale)});
-  //   super.didChangeDependencies();
-  // }
-
   var currentPage = DrawerSections.home;
 
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_typing_uninitialized_variables
     var container;
 
     if (currentPage == DrawerSections.home) {
@@ -86,27 +131,10 @@ class _MainPageState extends State<MainPage> {
       body: container,
       drawer: Drawer(
         child: SingleChildScrollView(
+          // ignore: avoid_unnecessary_containers
           child: Container(
             child: Column(
               children: [
-                //  DrawerHeader(
-                //   decoration: const BoxDecoration(
-                //     color: Colors.red,
-                //   ),
-                //   child: Column(
-                //     crossAxisAlignment: CrossAxisAlignment.center,
-                //     children: const <Widget>[
-                //       Text("Menu")
-                //     ],
-                //   ),
-                // ),
-                // const Text(
-                //   "Menu",
-                //   textAlign: TextAlign.center,
-                // ),
-                // const SizedBox(
-                //   height: 30,
-                // ),
                 const MyHeaderDrawer(),
                 MyDrawerList(),
               ],

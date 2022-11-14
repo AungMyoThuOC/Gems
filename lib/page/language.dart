@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:gems_records/l10n/l10n.dart';
+import 'package:gems_records/provider/locale_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Language extends StatefulWidget {
   const Language({Key? key}) : super(key: key);
@@ -9,6 +14,22 @@ class Language extends StatefulWidget {
 }
 
 class _LanguageState extends State<Language> {
+  int selectedLang = 1;
+
+  getLang() async {
+    final prefs = await SharedPreferences.getInstance();
+    final int? lang = prefs.getInt('Language');
+    setState(() {
+      selectedLang = (lang == null) ? 1 : lang;
+    });
+  }
+
+  @override
+  void initState() {
+    getLang();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +59,27 @@ class _LanguageState extends State<Language> {
                           width: 10,
                         ),
                         TextButton(
-                          onPressed: () {},
-                          child: const Text("English"),
-                        ),
+                            onPressed: () {},
+                            child:
+                                const Text("English"),
+                                // Text(translation(context).english)
+                              ),
+                        // RadioListTile<int>(
+                        //   value: 1,
+                        //   groupValue: selectedLang,
+                        //   title: Text("English"),
+                        //   onChanged: (value) async {
+                        //     final prefs = await SharedPreferences.getInstance();
+                        //     prefs.setInt("language", 1);
+                        //     setState(() {
+                        //       selectedLang = 1;
+                        //       final provider = Provider.of<LocaleProvider>(
+                        //           context,
+                        //           listen: false);
+                        //       provider.setLocale(Locale('en'));
+                        //     });
+                        //   },
+                        // )
                       ],
                     ),
                     const SizedBox(
@@ -60,9 +99,27 @@ class _LanguageState extends State<Language> {
                           width: 10,
                         ),
                         TextButton(
-                          onPressed: () {}, 
-                          child: const Text("Myanmar")
+                          onPressed: () {},
+                          child:
+                              const Text("Myanmar")
+                              // Text(translation(context).myanmar),
                         ),
+                        // RadioListTile(
+                        //     value: 2,
+                        //     groupValue: selectedLang,
+                        //     title: Text("မြန်မာ"),
+                        //     onChanged: (value) async {
+                        //       final prefs =
+                        //           await SharedPreferences.getInstance();
+                        //       prefs.setInt('language', 2);
+                        //       setState(() {
+                        //         selectedLang = 2;
+                        //         final provider = Provider.of<LocaleProvider>(
+                        //             context,
+                        //             listen: false);
+                        //         provider.setLocale(Locale('my'));
+                        //       });
+                        //     })
                       ],
                     )
                   ],

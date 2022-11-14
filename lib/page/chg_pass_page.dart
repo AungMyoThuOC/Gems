@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import 'package:gems_records/classes/language_constants.dart';
 
 // ignore: camel_case_types
 class Change_Password extends StatefulWidget {
@@ -30,7 +31,7 @@ class _Change_PasswordState extends State<Change_Password> {
                   child: TextFormField(
                     controller: chgpassCon,
                     decoration: const InputDecoration(
-                      labelText: "Password",
+                      labelText: "password",
                     ),
                   ),
                 ),

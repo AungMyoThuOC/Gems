@@ -352,3 +352,83 @@
 //     );
 //   }
 // }
+
+// main.dart
+
+  // @override
+  // void didChangeDependencies() {
+  //   getLocale().then((locale) => {setLocale(locale)});
+  //   super.didChangeDependencies();
+  // }
+
+
+  //  DrawerHeader(
+                //   decoration: const BoxDecoration(
+                //     color: Colors.red,
+                //   ),
+                //   child: Column(
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: const <Widget>[
+                //       Text("Menu")
+                //     ],
+                //   ),
+                // ),
+                // const Text(
+                //   "Menu",
+                //   textAlign: TextAlign.center,
+                // ),
+                // const SizedBox(
+                //   height: 30,
+                // ),
+
+
+                 // initialRoute: '/',
+      // routes: {
+      //   '/' :(context) =>  MainPage(),
+      //   '/home' :(context) => const Home(),
+      // },
+
+      // ignore_for_file: prefer_typing_uninitialized_variables, avoid_unnecessary_containers, unused_local_variable, unused_field
+
+       // static void setLocale(BuildContext context, Locale newLocale) {
+  //   _MainPageState? state = context.findAncestorStateOfType<_MainPageState>();
+  // }
+
+  // Locale? _locale;
+
+  // setLocale(Locale locale) {
+  //   setState(() {
+  //     _locale = locale;
+  //   });
+  // }
+
+  // @override
+  // void didChangeDependencies() {
+  //   getLocale().then((locale) => {setLocale(locale)});
+  //   super.didChangeDependencies();
+  // }
+
+  //  localizationsDelegates: AppLocalizations.localizationsDelegates,
+  //     supportedLocales: AppLocalizations.supportedLocales,
+  //     onGenerateRoute: CustomRouter.generatedRoute,
+  //     initialRoute: homeRoute,
+  //     locale: _locale,
+
+  // {
+  //   return MaterialApp(
+  //     title: "Gems Records",
+  //     // debugShowCheckedModeBanner: false,
+  //     // localizationsDelegates: AppLocalizations.localizationsDelegates,
+  //     // supportedLocales: AppLocalizations.supportedLocales,
+  //     // onGenerateRoute: CustomRouter.generatedRoute,
+  //     // initialRoute: homeRoute,
+  //     locale: _locale,
+  //     localizationsDelegates: const [
+  //       AppLocalizations.delegate,
+  //       GlobalMaterialLocalizations.delegate,
+  //       GlobalCupertinoLocalizations.delegate,
+  //       GlobalWidgetsLocalizations.delegate,
+  //     ],
+  //     home: const MainPage(),
+  //   );
+  // }

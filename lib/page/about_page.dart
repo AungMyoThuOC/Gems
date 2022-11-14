@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gems_records/classes/language_constants.dart';
 
 class About extends StatefulWidget {
   const About({Key? key}) : super(key: key);
@@ -24,39 +25,38 @@ class _AboutState extends State<About> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("What includes :"),
+              // const Text("What includes :"),
+              Text(translation(context).w_i),
               const SizedBox(
                 height: 15,
               ),
               Column(
-                children: const [
-                  Text(
-                    "-  Can save 8 photos of each gem stone."
-                  ),
-                  SizedBox(
+                children:  [
+                  // Text("-  Can save 8 photos of each gem stone."),
+                  Text(translation(context).c_s_8_p_o_e_g_s),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                      "-  Can record the name and the phone number\n  of seller."
-                    ),
-                  SizedBox(
+                  // const Text(
+                  //     "-  Can record the name and the phone number\n  of seller."),
+                  Text(translation(context).c_r_t_n_a_t_p_n_o_s),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                      "-  Can record type, weight, accepted date of the\n   gem stone as well as the facts about\n  that stone."
-                    ),
-                  SizedBox(
+                  // const Text(
+                  //     "-  Can record type, weight, accepted date of the\n   gem stone as well as the facts about\n  that stone."),
+                  Text(translation(context).c_r_t_w_a_d_o_t_g_s_a_w_a_t_f_a_t_s),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                      "-  Can search for recorded gem stones with date,\n   seller's name and gem stone's type."
-                    ),
-                  SizedBox(
+                  // const Text(
+                  //     "-  Can search for recorded gem stones with date,\n   seller's name and gem stone's type."),
+                  Text(translation(context).c_s_f_r_g_s_w_d_s_n_a_g_s_t),
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    "-  Can edit delete the recorded gem stones."
-                  )
+                  // const Text("-  Can edit delete the recorded gem stones.")
+                  Text(translation(context).c_e_a_d_t_r_g_s)
                 ],
               )
             ],

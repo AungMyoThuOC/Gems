@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:gems_records/classes/language_constants.dart';
 
 class Textfield extends StatefulWidget {
   const Textfield({
@@ -166,6 +167,8 @@ class _TextfieldState extends State<Textfield> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // const Text("Type"),
+                // Text(translation(context).type),
+                Text(translation(context).type),
                 TextFormField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   // autovalidateMode: submitted
@@ -180,7 +183,7 @@ class _TextfieldState extends State<Textfield> {
                     return null;
                   },
                   decoration: const InputDecoration(
-                    labelText: "Type",
+                    // labelText: "Type",
                     hintText: "Type",
                     // errorText: _typeText,
                   ),
@@ -196,6 +199,7 @@ class _TextfieldState extends State<Textfield> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // const Text("Weight"),
+                        Text(translation(context).weight),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           // autovalidateMode: submitted
@@ -210,7 +214,8 @@ class _TextfieldState extends State<Textfield> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                              labelText: "Weight", hintText: "Weight"
+                              // labelText: "Weight", 
+                              hintText: "Weight"
                               // errorText: _weightText,
                               // labelText: "Type",
                               ),
@@ -230,6 +235,7 @@ class _TextfieldState extends State<Textfield> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // const Text("Price"),
+                        Text(translation(context).price),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           // autovalidateMode: submitted
@@ -257,7 +263,8 @@ class _TextfieldState extends State<Textfield> {
                           //   }
                           // },
                           decoration: const InputDecoration(
-                              labelText: "Price", hintText: "Price"
+                              // labelText: "Price",
+                               hintText: "Price"
                               // errorText: _priceText,
                               // labelText: "Type",
                               ),
@@ -277,6 +284,7 @@ class _TextfieldState extends State<Textfield> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // const Text("From Whom"),
+                        Text(translation(context).from_whom),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           // autovalidateMode: submitted
@@ -291,7 +299,8 @@ class _TextfieldState extends State<Textfield> {
                                   ? "Enter a valide name"
                                   : null,
                           decoration: const InputDecoration(
-                              labelText: "From Whom", hintText: "From Whom"
+                              // labelText: "From Whom", 
+                              hintText: "From Whom"
                               // errorText: _fromwhomText,
                               // labelText: "Type",
                               ),
@@ -311,6 +320,7 @@ class _TextfieldState extends State<Textfield> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // const Text("Phone"),
+                        Text(translation(context).phone),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           // autovalidateMode: submitted
@@ -325,7 +335,8 @@ class _TextfieldState extends State<Textfield> {
                           // ],
                           controller: phonecont,
                           decoration: const InputDecoration(
-                              labelText: "Phone", hintText: "Phone"),
+                              // labelText: "Phone", 
+                              hintText: "Phone"),
                           // decoration:
                           //     InputDecoration(errorText: _phoneText
                           //         // labelText: "Type",
@@ -355,6 +366,7 @@ class _TextfieldState extends State<Textfield> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         // const Text("Remark"),
+                        Text(translation(context).remark),
                         TextFormField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           // autovalidateMode: submitted
@@ -369,7 +381,8 @@ class _TextfieldState extends State<Textfield> {
                             return null;
                           },
                           decoration: const InputDecoration(
-                              labelText: "Remark", hintText: "Remark"
+                              // labelText: "Remark", 
+                              hintText: "Remark"
                               // errorText: _remarkText,
                               // labelText: "Type",
                               ),
