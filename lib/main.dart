@@ -4,20 +4,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:gems_records/l10n/l10n.dart';
 import 'package:gems_records/my_drawer_header.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:gems_records/page/language.dart';
 import 'package:gems_records/page/view_record_page.dart';
-import 'package:gems_records/provider/locale_provider.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:gems_records/classes/language_constants.dart';
-import 'package:gems_records/router/custom_router.dart';
 // import 'package:gems_records/router/route_constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -58,10 +54,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-      create: (context) => LocaleProvider(),
-      builder: (context, child) {
-        final provider = Provider.of<LocaleProvider>(context);
+  Widget build(BuildContext context) {
         return MaterialApp(
           title: "Gems Records",
           debugShowCheckedModeBanner: false,
@@ -69,17 +62,16 @@ class _MyAppState extends State<MyApp> {
           // supportedLocales: AppLocalizations.supportedLocales,
           // onGenerateRoute: CustomRouter.generatedRoute,
           // initialRoute: homeRoute,
-          supportedLocales: L10n.all,
-          locale: provider.locale,
           localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
+          locale: _locale,
           home: const MainPage(),
         );
-      });
+      }
 }
 
 // class MyApp extends StatelessWidget {
@@ -116,7 +108,7 @@ class _MainPageState extends State<MainPage> {
     } else if (currentPage == DrawerSections.view_all_records) {
       container = const ViewRecords();
     } else if (currentPage == DrawerSections.language) {
-      container = const Language();
+      container = const LanguagePage();
     } else if (currentPage == DrawerSections.chg_pass) {
       container = const Change_Password();
     } else if (currentPage == DrawerSections.about) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gems_records/classes/language.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
@@ -16,7 +17,7 @@ class CustomRouter {
       case viewallRoute:
         return MaterialPageRoute(builder: (_) => const ViewRecords());
       case languageRoute:
-        return MaterialPageRoute(builder: (_) => const Language());
+        return MaterialPageRoute(builder: (_) => const LanguagePage());
       case changpassRout:
         return MaterialPageRoute(builder: (_) => const Change_Password());
       case aboutRoute:
