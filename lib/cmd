@@ -355,6 +355,11 @@
 
 // main.dart
 
+// WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
+
   // @override
   // void didChangeDependencies() {
   //   getLocale().then((locale) => {setLocale(locale)});

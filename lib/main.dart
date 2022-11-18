@@ -19,10 +19,7 @@ void main() async {
   await Hive.initFlutter();
 
   var box = await Hive.openBox('mybox');
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  
   runApp(const MyApp());
 }
 

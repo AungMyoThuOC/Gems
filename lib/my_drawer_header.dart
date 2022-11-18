@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gems_records/classes/language_constants.dart';
 
 class MyHeaderDrawer extends StatefulWidget {
   const MyHeaderDrawer({Key? key}) : super(key: key);
@@ -17,12 +18,12 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
       padding: const EdgeInsets.only(top: 20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           SizedBox(
             height: 70,
             child: Text(
-              "Menu",
-              style: TextStyle(
+              translation(context).menu,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 30
               ),

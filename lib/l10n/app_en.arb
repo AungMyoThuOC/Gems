@@ -2,6 +2,7 @@
     "menu" : "Menu",
     "home" : "Home",
     "view_rec" : "View Records",
+    "changelanguage" : "Change language",
     "language" : "Language",
     "chg_pass" : "Change Password",
     "about" : "About",

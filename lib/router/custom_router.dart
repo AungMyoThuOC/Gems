@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gems_records/classes/language.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
