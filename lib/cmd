@@ -848,3 +848,223 @@
 //                         //     })
 //                       ],
 //                     )
+
+<div class="Gif" style="width: 518"
+
+// HOME PAGE
+
+// import 'package:gems_records/page/new_rec_page.dart';
+
+// ignore: null_check_always_fails
+            // image: null!,
+            // onSubmit: (String value) {  },
+
+// () {
+                //   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                //       builder: (context) => NewRecod(
+                //             onSubmit: (String value) {},
+                //             onSave: () {},
+                //           )));
+                // },
+
+// appBar: PreferredSize(
+//         preferredSize: const Size.fromHeight(80.0),
+//         child: AppBar(
+//           backgroundColor: Colors.transparent,
+//           automaticallyImplyLeading: false,
+//           elevation: 0.0,
+//           bottom: PreferredSize(
+//             preferredSize: const Size.fromHeight(80.0),
+//             child: Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: TextFormField(
+//                 keyboardType: TextInputType.text,
+//                 controller: sercontr,
+//                 style: const TextStyle(color: Colors.black),
+//                 decoration: InputDecoration(
+//                   hintText: "Search With Form Whom",
+//                   hintStyle: const TextStyle(
+//                     color: Colors.grey,
+//                   ),
+//                   enabledBorder: OutlineInputBorder(
+//                     borderRadius: BorderRadius.circular(5),
+//                     borderSide: const BorderSide(
+//                         width: 1, color: Color.fromARGB(225, 224, 224, 244)),
+//                   ),
+//                   focusedBorder: OutlineInputBorder(
+//                       borderRadius: BorderRadius.circular(5),
+//                       borderSide: const BorderSide(
+//                           width: 1, color: Color.fromARGB(255, 177, 177, 177))),
+//                   prefixIcon: Padding(
+//                     padding: const EdgeInsets.only(right: 10),
+//                     child: IconButton(
+//                       onPressed: () {},
+//                       icon: const Icon(
+//                         Icons.search_outlined,
+//                         size: 20,
+//                       ),
+//                       splashRadius: 2,
+//                     ),
+//                   ),
+//                   suffixIcon: IconButton(
+//                     onPressed: sercontr.clear,
+//                     icon: const Icon(
+//                       Icons.clear_outlined,
+//                       size: 20,
+//                     ),
+//                     splashRadius: 2,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+
+
+// CHANGE PSS PAGE
+// appBar: PreferredSize(
+//         preferredSize: const Size.fromHeight(130.0),
+//         child: AppBar(
+//           backgroundColor: Colors.transparent,
+//           automaticallyImplyLeading: false,
+//           elevation: 0.0,
+//           bottom: PreferredSize(
+//             preferredSize: const Size.fromHeight(100.0),
+//             child: Column(
+//               children: [
+//                 Padding(
+//                   padding: const EdgeInsets.all(8.0),
+//                   child: TextFormField(
+//                     controller: chgpassCon,
+//                     decoration: const InputDecoration(
+//                       labelText: "password",
+//                     ),
+//                   ),
+//                 ),
+//                 const SizedBox(
+//                   height: 10,
+//                 ),
+//                 Padding(
+//                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+//                   // ignore: sized_box_for_whitespace
+//                   child: Container(
+//                     width: double.infinity,
+//                     height: 30,
+//                     child: ElevatedButton(
+//                       onPressed: (){}, 
+//                       child: const Text(
+//                         "Save"
+//                       )
+//                     ),
+//                   ),
+//                 )
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+
+// LANGUAGE PAGE
+// appBar: PreferredSize(
+//         preferredSize: const Size.fromHeight(150),
+//         child: AppBar(
+//           backgroundColor: Colors.transparent,
+//           automaticallyImplyLeading: false,
+//           elevation: 0.0,
+//           bottom: PreferredSize(
+//             preferredSize: const Size.fromHeight(100.0),
+//             child: Padding(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   DropdownButton<Language>(
+//                     iconSize: 30,
+//                     hint: Text(translation(context).changelanguage),
+//                     // hint: Text(translation(context).changelanguage),
+//                     onChanged: (Language? language) async {
+//                       if (language != null) {
+//                         Locale _locale = await setLocale(language.languageCode);
+//                         MyApp.setLocale(context, _locale);
+//                       }
+//                     },
+//                     items: Language.languageList()
+//                         .map<DropdownMenuItem<Language>>(
+//                           (e) => DropdownMenuItem<Language>(
+//                             value: e,
+//                             child: Row(
+//                               mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                               children: <Widget>[
+//                                 Text(
+//                                   e.flag,
+//                                   style: const TextStyle(fontSize: 30),
+//                                 ),
+//                                 Text(e.name)
+//                               ],
+//                             ),
+//                           ),
+//                         )
+//                         .toList(),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),
+
+// VIEW REC PAGE
+// appBar: PreferredSize(
+//         preferredSize: const Size.fromHeight(100.0),
+//         child: AppBar(
+//           backgroundColor: Colors.transparent,
+//           automaticallyImplyLeading: false,
+//           elevation: 0.0,
+//           bottom: PreferredSize(
+//             preferredSize: const Size.fromHeight(80.0),
+//             // ignore: avoid_unnecessary_containers
+//             child: Container(
+//               child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                 children: [
+//                   // ignore: sized_box_for_whitespace
+//                   Container(
+//                     width: 250,
+//                     child: Padding(
+//                       padding: const EdgeInsets.all(8.0),
+//                       child: TextFormField(
+//                         decoration: const InputDecoration(
+//                             hintText: "Search....",
+//                             hintStyle: TextStyle(color: Colors.grey),
+//                             enabledBorder: OutlineInputBorder(
+//                               borderSide: BorderSide(
+//                                 color: Colors.grey,
+//                                 width: 2.0,
+//                               ),
+//                             )),
+//                       ),
+//                     ),
+//                   ),
+//                   // ignore: avoid_unnecessary_containers
+//                   Container(
+//                       // width: 80,
+//                       child: DropdownButton<String>(
+//                         value: dropdownValue,
+//                         items:
+//                             items.map<DropdownMenuItem<String>>((String value) {
+//                           return DropdownMenuItem<String>(
+//                               value: value, child: Text(value));
+//                         }).toList(),
+//                         onChanged: (String? newValue) {
+//                           setState(() {
+//                             dropdownValue = newValue ?? '';
+//                           });
+//                         },
+//                       ))
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       ),

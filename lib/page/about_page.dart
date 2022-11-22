@@ -16,6 +16,7 @@ class _AboutState extends State<About> {
     return Scaffold(
       appBar: AppBar(
         title: Text(translation(context).about),
+        centerTitle: true,
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
