@@ -92,13 +92,13 @@ class _HomeState extends State<Home> {
           title: Text(translation(context).home),
           centerTitle: true,
           elevation: 0.0,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(80.0),
-            child: Padding(
-              padding: const EdgeInsets.all(70.0),
-              child: _main(context),
-            ),
-          ),
+          // bottom: PreferredSize(
+          //   preferredSize: const Size.fromHeight(50.0),
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(50.0),
+          //     child: _main(context),
+          //   ),
+          // ),
         ),
       ),
       drawer: Drawer(
