@@ -920,6 +920,61 @@
 //         ),
 //       ),
 
+appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50.0),
+        child: AppBar(
+          // backgroundColor: Colors.transparent,
+          title: Text(translation(context).home),
+          centerTitle: true,
+          elevation: 0.0,
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(80.0),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                  keyboardType: TextInputType.text,
+                  controller: sercontr,
+                  style: const TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    hintText: "Search with from whom",
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: const BorderSide(
+                          width: 1, 
+                          color: Color.fromARGB(225, 224, 224, 244)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: const BorderSide(
+                            width: 1,
+                            color: Color.fromARGB(255, 177, 177, 177))),
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                        onPressed: () {}, 
+                        icon: const Icon(
+                          Icons.search_outlined,
+                          size: 20,
+                        ),
+                        splashRadius: 2,
+                      ),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: sercontr.clear, 
+                      icon: const Icon(
+                        Icons.clear_outlined,
+                        size: 20,
+                      ),
+                      splashRadius: 2,
+                    )
+                  )),
+            ),
+          ),
+        ),
+      ),
 
 // CHANGE PSS PAGE
 // appBar: PreferredSize(

@@ -86,20 +86,17 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50.0),
-        child: AppBar(
-          title: Text(translation(context).home),
-          centerTitle: true,
-          elevation: 0.0,
-          // bottom: PreferredSize(
-          //   preferredSize: const Size.fromHeight(50.0),
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(50.0),
-          //     child: _main(context),
-          //   ),
-          // ),
-        ),
+      appBar: AppBar(
+        title: Text(translation(context).home),
+        centerTitle: true,
+        elevation: 0.0,
+        // bottom: PreferredSize(
+        //   preferredSize: const Size.fromHeight(10.0),
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(70.0),
+        //     child: _main(context),
+        //   ),
+        // )
       ),
       drawer: Drawer(
         child: _drawerList(),
@@ -119,16 +116,21 @@ class _HomeState extends State<Home> {
             )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      body: Center(
-        child: ListView.builder(
-          itemCount: db.toDoList.length,
-          itemBuilder: (context, index) {
-            return ToDoTile(
-              taskName: db.toDoList[index][0],
-              deleteFunction: (context) => deleteTask(index),
-              editFunction: (context) => editTask(index),
-            );
-          },
+      body: SizedBox(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: ListView.builder(
+              itemCount: db.toDoList.length,
+              itemBuilder: (context, index) {
+                return ToDoTile(
+                  taskName: db.toDoList[index][0],
+                  deleteFunction: (context) => deleteTask(index),
+                  editFunction: (context) => editTask(index),
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
@@ -151,14 +153,12 @@ class _HomeState extends State<Home> {
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(5),
                   borderSide: const BorderSide(
-                      width: 1, 
-                      color: Color.fromARGB(225, 224, 224, 244)),
+                      width: 1, color: Color.fromARGB(225, 224, 224, 244)),
                 ),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
-                        width: 1, 
-                        color: Color.fromARGB(255, 177, 177, 177))),
+                        width: 1, color: Color.fromARGB(255, 177, 177, 177))),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.only(right: 10),
                   child: IconButton(
@@ -210,10 +210,8 @@ class _HomeState extends State<Home> {
                       height: 70,
                       child: Text(
                         translation(context).menu,
-                        style: const TextStyle(
-                          color: Colors.white, 
-                          fontSize: 30
-                        ),
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 30),
                       ),
                     )
                   ],
