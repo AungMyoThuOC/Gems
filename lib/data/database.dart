@@ -3,23 +3,24 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 // final typecont = TextEditingController();
 
-class ToDoDataBase {
-  List toDoList = [];
+class GemDataBase {
+  // ignore: non_constant_identifier_names
+  List GemList = [];
 
   final _myBox = Hive.box('mybox');
 
   void createInitialData() {
-    toDoList = [
+    GemList = [
       // ["Make Tutorial", false],
       // ["Do Exercise", false]
     ];
   }
 
   void loadData() {
-    toDoList = _myBox.get("TODOLIST");
+    GemList = _myBox.get("GemLIST");
   }
 
   void updateDataBase() {
-    _myBox.put("TODOLIST", toDoList);
+    _myBox.put("GemLIST", GemList);
   }
 }

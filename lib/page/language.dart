@@ -58,7 +58,6 @@ class _LanguagePageState extends State<LanguagePage> {
   }
 
   Container _drawerList() {
-    // ignore: no_leading_underscores_for_local_identifiers
     TextStyle _textStyle = const TextStyle(
       color: Colors.black,
       fontSize: 15,

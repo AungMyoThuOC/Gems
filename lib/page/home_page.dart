@@ -3,7 +3,7 @@ import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/data/database.dart';
 import 'package:gems_records/router/route_constants.dart';
 import 'package:gems_records/util/dialog_box.dart';
-import 'package:gems_records/util/todo_tile.dart';
+import 'package:gems_records/util/gem_tile.dart';
 import 'package:hive/hive.dart';
 
 class Home extends StatefulWidget {
@@ -26,11 +26,11 @@ class _HomeState extends State<Home> {
   TextEditingController remarkcont = TextEditingController();
 
   final _myBox = Hive.box('mybox');
-  ToDoDataBase db = ToDoDataBase();
+  GemDataBase db = GemDataBase();
 
   @override
   void initState() {
-    if (_myBox.get("TODOLIST") == null) {
+    if (_myBox.get("GemLIST") == null) {
       db.createInitialData();
     } else {
       db.loadData();
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
 
   void saveNewTask() {
     setState(() {
-      db.toDoList.add([typecont.text, false]);
+      db.GemList.add([typecont.text, false]);
       typecont.clear();
       weightcont.clear();
       pricecont.clear();
@@ -71,14 +71,14 @@ class _HomeState extends State<Home> {
 
   void deleteTask(int index) {
     setState(() {
-      db.toDoList.removeAt(index);
+      db.GemList.removeAt(index);
     });
     db.updateDataBase();
   }
 
   void editTask(int index) {
     setState(() {
-      // db.toDoList.(index);
+      // db.GemList.(index);
     });
     db.updateDataBase();
   }
@@ -90,13 +90,6 @@ class _HomeState extends State<Home> {
         title: Text(translation(context).home),
         centerTitle: true,
         elevation: 0.0,
-        // bottom: PreferredSize(
-        //   preferredSize: const Size.fromHeight(10.0),
-        //   child: Padding(
-        //     padding: const EdgeInsets.all(70.0),
-        //     child: _main(context),
-        //   ),
-        // )
       ),
       drawer: Drawer(
         child: _drawerList(),
@@ -119,17 +112,21 @@ class _HomeState extends State<Home> {
       body: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: ListView.builder(
-              itemCount: db.toDoList.length,
-              itemBuilder: (context, index) {
-                return ToDoTile(
-                  taskName: db.toDoList[index][0],
-                  deleteFunction: (context) => deleteTask(index),
-                  editFunction: (context) => editTask(index),
-                );
-              },
-            ),
+          child: Column(
+            children: [
+              Center(child: _main(context)),
+              ListView.builder(
+                shrinkWrap: true,
+                itemCount: db.GemList.length,
+                itemBuilder: (context, index) {
+                  return GemTile(
+                    taskName: db.GemList[index][0],
+                    deleteFunction: (context) => deleteTask(index),
+                    editFunction: (context) => editTask(index),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

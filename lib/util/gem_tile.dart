@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 // ignore: must_be_immutable
-class ToDoTile extends StatelessWidget {
+class GemTile extends StatelessWidget {
   final String taskName;
   // final bool taskcompleted;
   Function(BuildContext)? editFunction;
   Function(BuildContext)? deleteFunction;
-  ToDoTile(
+  GemTile(
       {Key? key,
       required this.taskName,
       required this.editFunction,

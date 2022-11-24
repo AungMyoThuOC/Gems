@@ -920,6 +920,14 @@
 //         ),
 //       ),
 
+ // bottom: PreferredSize(
+        //   preferredSize: const Size.fromHeight(10.0),
+        //   child: Padding(
+        //     padding: const EdgeInsets.all(70.0),
+        //     child: _main(context),
+        //   ),
+        // )
+
 appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50.0),
         child: AppBar(
