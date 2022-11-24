@@ -109,25 +109,23 @@ class _HomeState extends State<Home> {
             )
           : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      body: SizedBox(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Center(child: _main(context)),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: db.GemList.length,
-                itemBuilder: (context, index) {
-                  return GemTile(
-                    taskName: db.GemList[index][0],
-                    deleteFunction: (context) => deleteTask(index),
-                    editFunction: (context) => editTask(index),
-                  );
-                },
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Center(child: _main(context)),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: db.GemList.length,
+              itemBuilder: (context, index) {
+                return GemTile(
+                  taskName: db.GemList[index][0],
+                  deleteFunction: (context) => deleteTask(index),
+                  editFunction: (context) => editTask(index),
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
