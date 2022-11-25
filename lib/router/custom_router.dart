@@ -4,7 +4,7 @@ import 'package:gems_records/page/chg_pass_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:gems_records/page/language.dart';
 // import 'package:gems_records/page/new_rec_page.dart';
-import 'package:gems_records/page/view_record_page.dart';
+// import 'package:gems_records/page/view_record_page.dart';
 import 'package:gems_records/page/not_found_page.dart';
 import 'package:gems_records/router/route_constants.dart';
 
@@ -13,8 +13,8 @@ class CustomRouter {
     switch (settings.name) {
       case homeRoute:
         return MaterialPageRoute(builder: (_) => const Home());
-      case viewallRoute:
-        return MaterialPageRoute(builder: (_) => const ViewRecords());
+      // case viewallRoute:
+      //   return MaterialPageRoute(builder: (_) => const ViewRecords());
       case languageRoute:
         return MaterialPageRoute(builder: (_) => const LanguagePage());
       case changpassRout:

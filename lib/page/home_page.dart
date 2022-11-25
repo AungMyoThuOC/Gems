@@ -231,22 +231,22 @@ class _HomeState extends State<Home> {
               Navigator.pushNamed(context, homeRoute);
             },
           ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.receipt_long_outlined,
-              color: Colors.red,
-              size: 20,
-            ),
-            title: Text(
-              translation(context).view_rec,
-              style: _textStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, viewallRoute);
-            },
-          ),
+          // const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.receipt_long_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).view_rec,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, viewallRoute);
+          //   },
+          // ),
           const Divider(),
           ListTile(
             leading: const Icon(
