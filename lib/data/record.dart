@@ -45,5 +45,13 @@ class Record {
     record_date = map['record_date'];
     record_type = map['record_type'];
     record_weight = map['record_weight'];
+    record_price = map['record_price'];
+    record_fromWhom = map['record_fromWhom'];
+    record_phoneNum = map['record_phoneNum'];
+    record_remark = map['record_remark'];
+    record_image_list = map['record_image_list'];
+    first_image = map['first_image'];
+    second_image = map['second_image'];
+    checkZero = map['checkZero'];
   }
 }
