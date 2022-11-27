@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:gems_records/classes/language_constants.dart';
+import 'package:gems_records/data/create_database.dart';
 import 'package:gems_records/data/database.dart';
 import 'package:gems_records/router/route_constants.dart';
 import 'package:gems_records/util/dialog_box.dart';
 import 'package:gems_records/util/gem_tile.dart';
 import 'package:hive/hive.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  int id;
+  Home({Key? key, required this.id}) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -16,7 +20,35 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   TextEditingController sercontr = TextEditingController();
-  bool bottomNavigator = true;
+
+  final _db = CreateDatabase.instance;
+  List getAccountList = [];
+  List getDataList = [];
+  List searchlist = [];
+  bool check = false;
+  bool searchCheck = false;
+
+  _getAcc() async {
+    List data = await _db.getAcc();
+    getAccountList = data;
+    setState(() {});
+  }
+
+  _getData() async {
+    List data = await _db.getRecords();
+    getDataList = data;
+    if (data.isEmpty) {
+      check = true;
+    }
+    setState(() {});
+  }
+
+  saveIdInsharedPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt("home_id", widget.id);
+    setState(() {});
+  }
+  // bool bottomNavigator = true;
 
   TextEditingController typecont = TextEditingController();
   TextEditingController weightcont = TextEditingController();
@@ -30,11 +62,13 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    if (_myBox.get("GemLIST") == null) {
-      db.createInitialData();
-    } else {
-      db.loadData();
-    }
+    // if (_myBox.get("GemLIST") == null) {
+    //   db.createInitialData();
+    // } else {
+    //   db.loadData();
+    // }
+    _getAcc();
+    _getData();
 
     super.initState();
   }

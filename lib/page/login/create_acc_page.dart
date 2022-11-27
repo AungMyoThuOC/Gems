@@ -5,11 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_acc.dart';
 import 'package:gems_records/data/create_database.dart';
-import 'package:gems_records/util/textfields.dart';
+import 'package:gems_records/page/home_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 
-// ignore: must_be_immutable
 class CreateAccountPage extends StatefulWidget {
   int checkPage;
   int id;
@@ -24,7 +23,6 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneNoController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
   bool checkName = false;
   bool checkPhone = false;
   bool checkPassword = false;
@@ -37,14 +35,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   String checkZero = "";
 
   Future<void> _selectImage() async {
-    final XFile? pickerFile = await _picker.pickImage(
+    final XFile? pickedFile = await _picker.pickImage(
       source: ImageSource.gallery,
       maxWidth: 100,
       maxHeight: 100,
       imageQuality: 100,
     );
     setState(() {
-      _setImageFileListFromFile(pickerFile);
+      _setImageFileListFromFile(pickedFile);
     });
   }
 
@@ -63,16 +61,22 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       checkZero = "false";
     }
     var acc_map = AccMap(
-        _nameController.text,
-        int.parse(_phoneNoController.text),
-        _passwordController.text,
-        image_path,
-        checkZero);
+      _nameController.text,
+      int.parse(_phoneNoController.text),
+      _passwordController.text,
+      image_path,
+      checkZero,
+    );
     _db.createAcc(acc_map);
     Navigator.pushReplacement(
-        context,
-        PageTransition(
-            child: HomePage(id: 1), type: PageTransitionType.rightToLeft));
+      context,
+      PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: Home(
+          id: 1,
+        ),
+      ),
+    );
     setState(() {});
   }
 
@@ -83,19 +87,22 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       checkZero = "false";
     }
     var acc_map = AccMap(
-        _nameController.text,
-        int.parse(_phoneNoController.text),
-        _passwordController,
-        image_path,
-        checkZero);
-    _db.editAcc(acc_map, getAccountList[0]["AutoId"]);
+      _nameController.text,
+      int.parse(_phoneNoController.text),
+      _passwordController.text,
+      image_path,
+      checkZero,
+    );
+    _db.editAcc(acc_map, getAccountList[0]["AutoID"]);
     Navigator.pushReplacement(
-        context,
-        PageTransition(
-            type: PageTransitionType.rightToLeft,
-            child: Homepage(
-              id: 1,
-            )));
+      context,
+      PageTransition(
+        type: PageTransitionType.rightToLeft,
+        child: Home(
+          id: 1,
+        ),
+      ),
+    );
     setState(() {});
   }
 
@@ -103,6 +110,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
     if (widget.checkPage == 1) {
       List data = await _db.getAcc();
       getAccountList = data;
+      print(">>>>>>>>>>>>>>>> $getAccountList");
       _nameController.text = getAccountList[0]["name"];
       _phoneNoController.text = getAccountList[0]["checkZero"] == "true"
           ? "0${getAccountList[0]["phonenum"]}"
@@ -132,13 +140,14 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             color: Colors.black,
             onPressed: () {
               Navigator.pushReplacement(
-                  context,
-                  PageTransition(
-                    type: PageTransitionType.leftToRight,
-                    child: widget.id == 2
-                        ? const RegisterPage()
-                        : HomePage(id: widget.id),
-                  ));
+                context,
+                PageTransition(
+                  type: PageTransitionType.leftToRight,
+                  child: widget.id == 2
+                      ? const RegisterPage()
+                      : Home(id: widget.id),
+                ),
+              );
               setState(() {});
             },
           ),
@@ -146,62 +155,65 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
         body: WillPopScope(
           onWillPop: () async {
             Navigator.pushReplacement(
-                context,
-                PageTransition(
-                    type: PageTransitionType.leftToRight,
-                    child: widget.id == 2
-                        ? const RegisterPage()
-                        : HomePage(id: widget.id)));
+              context,
+              PageTransition(
+                type: PageTransitionType.leftToRight,
+                child: widget.id == 2
+                    ? const RegisterPage()
+                    : Home(id: widget.id),
+              ),
+            );
             return false;
           },
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: GestureDetector(
-                      onTap: () {
-                        _selectImage();
-                        setState(() {});
-                      },
-                      child: _imageList == null
-                          ? widget.checkPage == 1 && image_path != ""
-                              ? Container(
+                    onTap: () {
+                      _selectImage();
+                      setState(() {});
+                    },
+                    child: _imageList == null
+                        ? widget.checkPage == 1 && image_path != ""
+                            ? Container(
+                                width: 100,
+                                height: 100,
+                                child: CircleAvatar(
+                                  backgroundImage: FileImage(
+                                    File(image_path),
+                                  ),
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Container(
                                   width: 100,
                                   height: 100,
-                                  child: CircleAvatar(
-                                    backgroundImage: FileImage(
-                                      File(image_path),
-                                    ),
+                                  color: Colors.grey[200],
+                                  child: const Icon(
+                                    Icons.camera_alt_rounded,
+                                    color: Colors.black,
                                   ),
-                                )
-                              : ClipRRect(
-                                  borderRadius: BorderRadius.circular(50),
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    color: Colors.grey[200],
-                                    child: const Icon(
-                                      Icons.camera_alt_rounded,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                )
-                          : Container(
-                              width: 100,
-                              height: 100,
-                              child: CircleAvatar(
-                                backgroundImage: FileImage(
-                                  File(_imageList![0].path),
                                 ),
+                              )
+                        : Container(
+                            width: 100,
+                            height: 100,
+                            child: CircleAvatar(
+                              backgroundImage: FileImage(
+                                File(_imageList![0].path),
                               ),
-                            )),
+                            ),
+                          ),
+                  ),
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 16, left: 16),
+                  padding: const EdgeInsets.only(top: 16, right: 16, left: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -215,16 +227,18 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           });
                         },
                         decoration: const InputDecoration(
-                            hintText: "Name",
-                            hintStyle: TextStyle(
-                              color: Colors.black45,
-                              fontSize: 15,
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black26),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black26))),
+                          hintText: "Name",
+                          hintStyle: TextStyle(
+                            color: Colors.black45,
+                            fontSize: 15,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black26),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black26),
+                          ),
+                        ),
                       ),
                       checkName ? errorTextWidget("Enter name") : Container(),
                     ],
@@ -241,7 +255,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(
                             RegExp('[0-9]'),
-                          )
+                          ),
                         ],
                         onChanged: (value) {
                           setState(() {
@@ -251,16 +265,18 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           });
                         },
                         decoration: const InputDecoration(
-                            hintText: "Phone number",
-                            hintStyle: TextStyle(
-                              color: Colors.black45,
-                              fontSize: 15,
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black26),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black26))),
+                          hintText: "Phone number",
+                          hintStyle: TextStyle(
+                            color: Colors.black45,
+                            fontSize: 15,
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black26),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black26),
+                          ),
+                        ),
                       ),
                       checkPhone
                           ? errorTextWidget("Enter phone number")
@@ -284,26 +300,30 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           });
                         },
                         decoration: InputDecoration(
-                            hintText: "Password",
-                            hintStyle: const TextStyle(
+                          hintText: "Password",
+                          hintStyle: const TextStyle(
+                            color: Colors.black45,
+                            fontSize: 15,
+                          ),
+                          focusedBorder: const UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black26),
+                          ),
+                          enabledBorder: const UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black26),
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              checkObscureText = !checkObscureText;
+                              setState(() {});
+                            },
+                            icon: Icon(
+                              checkObscureText
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                               color: Colors.black45,
-                              fontSize: 15,
                             ),
-                            focusedBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black26)),
-                            enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black26)),
-                            suffixIcon: IconButton(
-                                onPressed: () {
-                                  checkObscureText = !checkObscureText;
-                                  setState(() {});
-                                },
-                                icon: Icon(
-                                  checkObscureText
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                  color: Colors.black45,
-                                ))),
+                          ),
+                        ),
                       ),
                       checkPassword
                           ? errorTextWidget("Enter password")
@@ -322,11 +342,80 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       if (_nameController.text == "" &&
                           _phoneNoController.text == "" &&
                           _passwordController.text == "") {
-                            
+                        checkName = true;
+                        checkPhone = true;
+                        checkPassword = true;
+                      } else if (_nameController.text == "") {
+                        checkName = true;
+                        if (_phoneNoController.text == "") {
+                          checkPhone = true;
+                        } else {
+                          checkPhone = false;
+                        }
+                        if (_passwordController.text == "") {
+                          checkPassword = true;
+                        } else {
+                          checkPassword = false;
+                        }
+                      } else if (_phoneNoController.text == "") {
+                        checkPhone = true;
+                        if (_nameController.text == "") {
+                          checkName = true;
+                        } else {
+                          checkName = false;
+                        }
+                        if (_passwordController.text == "") {
+                          checkPassword = true;
+                        } else {
+                          checkPassword = false;
+                        }
+                      } else if (_passwordController.text == "") {
+                        checkPassword = true;
+                        if (_phoneNoController.text == "") {
+                          checkPhone = true;
+                        } else {
+                          checkPhone = false;
+                        }
+                        if (_nameController.text == "") {
+                          checkName = true;
+                        } else {
+                          checkName = false;
+                        }
+                      } else {
+                        checkName = false;
+                        checkPhone = false;
+                        checkPassword = false;
+                        if (_passwordController.text.length < 4) {
+                          showtoast(context,
+                              "Password must have at least 4 charactor!");
+                        } else if (_phoneNoController.text.length < 7) {
+                          showtoast(context,
+                              "Phone number must have at least 7 charactor!");
+                        } else {
+                          if (widget.checkPage == 0) {
+                            _createAccount();
+                          } else {
+                            _editAccount();
                           }
+                        }
+                      }
+                      setState(() {});
                     },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height * 0.07,
+                      width: MediaQuery.of(context).size.width,
+                      color: Colors.black,
+                      child: Center(
+                        child: Text(
+                          widget.checkPage == 0 ? "Create" : "Save",
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),
