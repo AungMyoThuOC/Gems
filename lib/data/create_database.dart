@@ -1,7 +1,10 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:async';
 import 'dart:io' as io;
 import 'package:gems_records/data/create_acc.dart';
 import 'package:gems_records/data/record.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -42,6 +45,7 @@ class CreateDatabase {
 
   // account
   Future<AccMap> createAcc(AccMap createAcc) async {
+    // ignore: no_leading_underscores_for_local_identifiers
     Database? _db = await instance.db;
     createAcc.name = await _db?.insert(ACCOUNT_TABLE, createAcc.toMap());
     return createAcc;
@@ -63,6 +67,7 @@ class CreateDatabase {
   }
 
   Future<int> deleteAcc(int id) async {
+    // ignore: no_leading_underscores_for_local_identifiers
     var _db = await db;
     return await _db!.delete(
       ACCOUNT_TABLE,
@@ -74,12 +79,15 @@ class CreateDatabase {
   // record
   Future<Record> createRecord(Record createRecord) async {
     Database? _db = await instance.db;
-    createRecord.record_phoneNum =
-        await _db?.insert(RECORD_TABLE, createRecord.toMap());
+    createRecord.record_phoneNum = await _db?.insert(
+      RECORD_TABLE, 
+      createRecord.toMap()
+    );
     return createRecord;
   }
 
   Future<int> editRecord(Record record, int id) async {
+    // ignore: no_leading_underscores_for_local_identifiers
     var _db = await db;
     return await _db!.update(
       RECORD_TABLE,

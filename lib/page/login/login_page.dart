@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_database.dart';
+import 'package:gems_records/page/Login/register_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:page_transition/page_transition.dart';
 

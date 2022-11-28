@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_acc.dart';
 import 'package:gems_records/data/create_database.dart';
+import 'package:gems_records/page/Login/register_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:page_transition/page_transition.dart';
 
+// ignore: must_be_immutable
 class CreateAccountPage extends StatefulWidget {
   int checkPage;
   int id;

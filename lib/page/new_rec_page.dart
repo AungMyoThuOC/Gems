@@ -17,6 +17,8 @@ class NewRecod extends StatefulWidget {
   VoidCallback onSave;
 
   final ValueChanged<String> onSubmit;
+  
+  get id => null;
 
   @override
   State<NewRecod> createState() => _NewRecodState();
@@ -177,7 +179,7 @@ class _NewRecodState extends State<NewRecod> {
           onPressed: () {
             // Navigator.popAndPushNamed(context, '/home');
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => const Home()));
+                context, MaterialPageRoute(builder: (context) =>  Home(id: widget.id,)));
             // Navigator.of(context).pushReplacement(
             //     MaterialPageRoute(builder: (context) => const Home()));
           },
@@ -532,7 +534,7 @@ class _NewRecodState extends State<NewRecod> {
                         setState(() {
                           Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => const Home()));
+                                  builder: (context) => Home(id: widget.id,)));
                         });
                       })
                   // RaisedButton(

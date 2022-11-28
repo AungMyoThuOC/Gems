@@ -12,7 +12,8 @@ class CustomRouter {
   static Route<dynamic> generatedRoute(RouteSettings settings) {
     switch (settings.name) {
       case homeRoute:
-        return MaterialPageRoute(builder: (_) => const Home());
+        var widget;
+        return MaterialPageRoute(builder: (_) => Home(id: widget.id,));
       // case viewallRoute:
       //   return MaterialPageRoute(builder: (_) => const ViewRecords());
       case languageRoute:

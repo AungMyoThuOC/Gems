@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:chewie/chewie.dart';
@@ -360,7 +361,7 @@ class _EditRecPageState extends State<EditRecPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10, left: 16, right: 16),
                   child: GestureDetector(
-                    onTap: () => _date(),
+                    onTap: () => _data(),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -689,9 +690,9 @@ class _EditRecPageState extends State<EditRecPage> {
                         loading = true;
                         if (_typeController.text == "" &&
                             _weightController.text == "" &&
-                            _priceControoler.text == "" &&
+                            _priceController.text == "" &&
                             _fromWhomController.text == "" &&
-                            _phoneController.text == "") {
+                            _phonecontroller.text == "") {
                           checkType = true;
                           checkWeight = true;
                           checkPrice = true;
@@ -705,7 +706,7 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkWeight = false;
                           }
-                          if (_priceControoler.text == "") {
+                          if (_priceController.text == "") {
                             checkPrice = true;
                           } else {
                             checkPrice = false;
@@ -715,7 +716,7 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkFromWhom = false;
                           }
-                          if (_phoneController.text == "") {
+                          if (_phonecontroller.text == "") {
                             checkPhone = true;
                           } else {
                             checkPhone = false;
@@ -728,7 +729,7 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkType = false;
                           }
-                          if (_priceControoler.text == "") {
+                          if (_priceController.text == "") {
                             checkPrice = true;
                           } else {
                             checkPrice = false;
@@ -738,13 +739,13 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkFromWhom = false;
                           }
-                          if (_phoneController.text == "") {
+                          if (_phonecontroller.text == "") {
                             checkPhone = true;
                           } else {
                             checkPhone = false;
                           }
                           loading = false;
-                        } else if (_priceControoler.text == "") {
+                        } else if (_priceController.text == "") {
                           checkPrice = true;
                           if (_typeController.text == "") {
                             checkType = true;
@@ -761,7 +762,7 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkFromWhom = false;
                           }
-                          if (_phoneController.text == "") {
+                          if (_phonecontroller.text == "") {
                             checkPhone = true;
                           } else {
                             checkPhone = false;
@@ -774,7 +775,7 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkType = false;
                           }
-                          if (_priceControoler.text == "") {
+                          if (_priceController.text == "") {
                             checkPrice = true;
                           } else {
                             checkPrice = false;
@@ -784,20 +785,20 @@ class _EditRecPageState extends State<EditRecPage> {
                           } else {
                             checkWeight = false;
                           }
-                          if (_phoneController.text == "") {
+                          if (_phonecontroller.text == "") {
                             checkPhone = true;
                           } else {
                             checkPhone = false;
                           }
                           loading = false;
-                        } else if (_phoneController.text == "") {
+                        } else if (_phonecontroller.text == "") {
                           checkPhone = true;
                           if (_typeController.text == "") {
                             checkType = true;
                           } else {
                             checkType = false;
                           }
-                          if (_priceControoler.text == "") {
+                          if (_priceController.text == "") {
                             checkPrice = true;
                           } else {
                             checkPrice = false;

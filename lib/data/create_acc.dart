@@ -5,7 +5,13 @@ class AccMap {
   var image;
   var checkZero;
 
-  AccMap(this.name, this.phonenum, this.password, this.image, this.checkZero);
+  AccMap(
+    this.name, 
+    this.phonenum, 
+    this.password, 
+    this.image, 
+    this.checkZero
+  );
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
