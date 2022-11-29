@@ -6,6 +6,23 @@
     "language" : "Language",
     "chg_pass" : "Change Password",
     "about" : "About",
+    "view_item" : "View item",
+    "edit" : "Edit",
+    "a_y_s_y_w_t_d_t_t" : 'Are you sure you want to delete this type?',
+    "no" : "No",
+    "yes" : "Yes",
+    "delete" : "Delete",
+    "login" : "Login",
+    "create_account" : "create account",
+    "take_photo" : "take photo",
+    "cho_img" : "choose image",
+    "sav_item" : "save item",
+    "itm_don_ha" : "item don't have",
+    "no_item" : "no item",
+    "gem_record" : "gem record",
+    "save" : "save"
+    "not_found" : "Not Found"
+    "s_w_c_n_f_y_p" : "Sorry, We couldn't found your page";
     "new_rec" : "New Record",
     "date" : "Date",
     "type" : "Type",

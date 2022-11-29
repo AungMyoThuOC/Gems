@@ -373,7 +373,7 @@ class _HomeState extends State<Home> {
                                                     context: context,
                                                     builder: (_) => AlertDialog(
                                                           title: Text(
-                                                            "Are you sure want to delete this type?",
+                                                            "Are you sure you want to delete this type?",
                                                             style: TextStyle(
                                                                 fontFamily:
                                                                     ubuntuFamily),
@@ -928,15 +928,13 @@ class _HomeState extends State<Home> {
                       id: widget.id,
                       type: -1,
                     )));
-                    setState(() {
-                      
-                    });
+            setState(() {});
           },
+          elevation: 5,
           child: const Icon(
             Icons.add,
             color: Colors.black,
           ),
-          elevation: 5,
         ),
       ),
       // floatingActionButton: (bottomNavigator == true)
