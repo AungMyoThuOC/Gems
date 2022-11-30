@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, unused_local_variable, no_leading_underscores_for_local_identifiers
 
 import 'dart:async';
 import 'dart:io' as io;
@@ -45,7 +45,6 @@ class CreateDatabase {
 
   // account
   Future<AccMap> createAcc(AccMap createAcc) async {
-    // ignore: no_leading_underscores_for_local_identifiers
     Database? _db = await instance.db;
     createAcc.name = await _db?.insert(ACCOUNT_TABLE, createAcc.toMap());
     return createAcc;
@@ -67,7 +66,6 @@ class CreateDatabase {
   }
 
   Future<int> deleteAcc(int id) async {
-    // ignore: no_leading_underscores_for_local_identifiers
     var _db = await db;
     return await _db!.delete(
       ACCOUNT_TABLE,
@@ -87,7 +85,6 @@ class CreateDatabase {
   }
 
   Future<int> editRecord(Record record, int id) async {
-    // ignore: no_leading_underscores_for_local_identifiers
     var _db = await db;
     return await _db!.update(
       RECORD_TABLE,

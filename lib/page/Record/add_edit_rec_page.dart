@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, unused_field, avoid_print, sized_box_for_whitespace, avoid_unnecessary_containers
+
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -5,6 +7,7 @@ import 'dart:typed_data';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_database.dart';
 import 'package:gems_records/data/record.dart';
@@ -12,6 +15,7 @@ import 'package:gems_records/page/home_page.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // ignore: must_be_immutable
 class EditRecPage extends StatefulWidget {
@@ -46,6 +50,7 @@ class _EditRecPageState extends State<EditRecPage> {
   final ImagePicker _picker = ImagePicker();
   List<XFile>? _imageList;
   List record_image_list = [];
+  // ignore: prefer_final_fields
   List<ChewieController>? _chewieController = [];
   Uint8List? imageBytes;
   bool loading = false;
@@ -183,7 +188,8 @@ class _EditRecPageState extends State<EditRecPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    "Take Photo",
+                                    // "Take Photo",
+                                    translation(context).take_photo,
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.black,
@@ -217,7 +223,8 @@ class _EditRecPageState extends State<EditRecPage> {
                                     height: 5,
                                   ),
                                   Text(
-                                    "Choose Image",
+                                    // "Choose Image",
+                                    translation(context).cho_img,
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.black,
@@ -327,7 +334,10 @@ class _EditRecPageState extends State<EditRecPage> {
           centerTitle: true,
           elevation: 0.0,
           title: Text(
-            widget.type == -1 ? "New Item" : "Edit Item",
+            widget.type == -1 
+            // ? "New Item" : "Edit Item",
+            ? translation(context).new_item
+            : translation(context).edit_item,
             style: TextStyle(color: Colors.black, fontFamily: ubuntuFamily),
           ),
           leading: BackButton(
@@ -357,7 +367,10 @@ class _EditRecPageState extends State<EditRecPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _titleTextWidget("Date"),
+                _titleTextWidget(
+                  // "Date",
+                  translation(context).dat,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10, left: 16, right: 16),
                   child: GestureDetector(
@@ -384,7 +397,10 @@ class _EditRecPageState extends State<EditRecPage> {
                     ),
                   ),
                 ),
-                _titleTextWidget("Type"),
+                _titleTextWidget(
+                  // "Type"
+                  translation(context).typ,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -409,12 +425,18 @@ class _EditRecPageState extends State<EditRecPage> {
                         ),
                       ),
                       checkType == true
-                          ? errorTextWidget("Enter type")
+                          ? errorTextWidget(
+                              // "Enter type",
+                              translation(context).ent_typ,
+                            )
                           : Container(),
                     ],
                   ),
                 ),
-                _titleTextWidget("Weight"),
+                _titleTextWidget(
+                  // "Weight",
+                  translation(context).weight,
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -439,12 +461,18 @@ class _EditRecPageState extends State<EditRecPage> {
                         ),
                       ),
                       checkWeight
-                          ? errorTextWidget("Enter weight")
+                          ? errorTextWidget(
+                            // "Enter weight",
+                            translation(context).ent_wei,
+                            )
                           : Container(),
                     ],
                   ),
                 ),
-                _titleTextWidget("Price"),
+                _titleTextWidget(
+                  // "Price",
+                  translation(context).pri
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -474,11 +502,17 @@ class _EditRecPageState extends State<EditRecPage> {
                           ),
                         ),
                       ),
-                      checkPrice ? errorTextWidget("Enter price") : Container(),
+                      checkPrice ? errorTextWidget(
+                        // "Enter price"
+                        translation(context).ent_pri
+                        ) : Container(),
                     ],
                   ),
                 ),
-                _titleTextWidget("From Whom"),
+                _titleTextWidget(
+                  // "From Whom",
+                  translation(context).froWhom,
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -503,12 +537,18 @@ class _EditRecPageState extends State<EditRecPage> {
                         ),
                       ),
                       checkFromWhom
-                          ? errorTextWidget("Enter from whom")
+                          ? errorTextWidget(
+                            // "Enter from whom",
+                            translation(context).ent_froWho,
+                            )
                           : Container(),
                     ],
                   ),
                 ),
-                _titleTextWidget("Phone"),
+                _titleTextWidget(
+                  // "Phone",
+                  translation(context).ph
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -539,12 +579,18 @@ class _EditRecPageState extends State<EditRecPage> {
                         ),
                       ),
                       checkPhone
-                          ? errorTextWidget("Enter phone number")
+                          ? errorTextWidget(
+                            // "Enter phone number"
+                            translation(context).ent_ph,
+                            )
                           : Container(),
                     ],
                   ),
                 ),
-                _titleTextWidget("Remark"),
+                _titleTextWidget(
+                  // "Remark"
+                  translation(context).rmk
+                  ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: TextField(
@@ -670,7 +716,7 @@ class _EditRecPageState extends State<EditRecPage> {
                           ),
                           child: const Center(
                             child: Icon(
-                              Icons.video_camera_back_outlined,
+                              FontAwesomeIcons.images,
                               size: 25,
                             ),
                           ),
@@ -842,7 +888,8 @@ class _EditRecPageState extends State<EditRecPage> {
                                   ),
                                 )
                               : Text(
-                                  "Save Item",
+                                  // "Save Item",
+                                  translation(context).sav_item,
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: ubuntuFamily,

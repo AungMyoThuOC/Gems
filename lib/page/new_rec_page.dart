@@ -246,55 +246,8 @@ class _NewRecodState extends State<NewRecod> {
               height: 20,
             ),
 
-            // for price
-            // Container(
-            //     width: 150.0,
-            //     child: TextFormField(
-            //       initialValue: widget.update ? order.price.toString() : null,
-            //       autocorrect: false,
-            //       onSaved: (String value) {
-            //         price = int.parse(value);
-            //       },
-            //       validator: (value) {
-            //         if (value.isEmpty ||
-            //             !new RegExp(r'^[0-9]+$').hasMatch(value)) {
-            //           return 'Please enter valid price';
-            //         }
-            //       },
-            //       decoration: new InputDecoration(
-            //         labelText: "Price",
-            //         hintText: 'Price',
-            //         prefixText: "Rs.",
-            //       ),
-            //       keyboardType: TextInputType.number,
-            //     ),
-            //   ),
-
-              // 
-            // ignore: avoid_unnecessary_containers
-            // Container(
-            //   child: Padding(
-            //     padding: const EdgeInsets.all(8.0),
-            //     child: Column(
-            //       crossAxisAlignment: CrossAxisAlignment.stretch,
-            //       children: [
-            //         const Text("Weight"),
-            //         TextFormField(
-            //           autovalidateMode: submitted
-            //               ? AutovalidateMode.onUserInteraction
-            //               : AutovalidateMode.disabled,
-            //           keyboardType: TextInputType.text,
-            //           controller: weightcont,
-            //           decoration: InputDecoration(
-            //             errorText: _weightText,
-            //             // labelText: "Type",
-            //           ),
-            //           onChanged: (text) => setState(() => text),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            
+             
             const SizedBox(
               height: 20,
             ),

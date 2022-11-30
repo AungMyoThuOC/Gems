@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/page/Login/create_acc_page.dart';
 import 'package:gems_records/page/Login/login_page.dart';
 import 'package:page_transition/page_transition.dart';
@@ -49,10 +50,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.black,
                   ),
-                  child: const Center(
+                  child:  Center(
                     child: Text(
-                      "Login",
-                      style: TextStyle(
+                      // "Login",
+                      translation(context).login,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 15,
                       ),
@@ -84,10 +86,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.grey[200],
                   ),
-                  child: const Center(
+                  child:  Center(
                     child: Text(
-                      "Create Account",
-                      style: TextStyle(
+                      // "Create Account",
+                      translation(context).create_account,
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 15,
                       ),

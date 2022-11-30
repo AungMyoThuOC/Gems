@@ -28,8 +28,9 @@ class _AboutState extends State<About> {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Gems Recore",
+            Text(
+              // "Gems Recore",
+              translation(context).gem_record,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -130,22 +131,6 @@ class _AboutState extends State<About> {
               Navigator.pushNamed(context, homeRoute);
             },
           ),
-          // const Divider(),
-          // ListTile(
-          //   leading: const Icon(
-          //     Icons.receipt_long_outlined,
-          //     color: Colors.red,
-          //     size: 20,
-          //   ),
-          //   title: Text(
-          //     translation(context).view_rec,
-          //     style: _textStyle,
-          //   ),
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //     Navigator.pushNamed(context, viewallRoute);
-          //   },
-          // ),
           const Divider(),
           ListTile(
             leading: const Icon(

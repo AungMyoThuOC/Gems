@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:gems_records/page/about_page.dart';
 import 'package:gems_records/page/chg_pass_page.dart';
@@ -13,20 +15,13 @@ class CustomRouter {
     switch (settings.name) {
       case homeRoute:
         var widget;
-        return MaterialPageRoute(builder: (_) => Home(id: widget.id,));
-      // case viewallRoute:
-      //   return MaterialPageRoute(builder: (_) => const ViewRecords());
+        return MaterialPageRoute(builder: (_) => Home(id: widget.id,));   
       case languageRoute:
         return MaterialPageRoute(builder: (_) => const LanguagePage());
       case changpassRout:
         return MaterialPageRoute(builder: (_) => const Change_Password());
       case aboutRoute:
         return MaterialPageRoute(builder: (_) => const About());
-      // case newrecRoute:
-      //   return MaterialPageRoute(
-      //       builder: (_) => NewRecod(
-      //             onSubmit: (String value) {}, onSave: () {  },
-      //           ));
       default:
         return MaterialPageRoute(builder: (_) => const NotFoundPage());
     }

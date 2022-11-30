@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_database.dart';
 import 'package:gems_records/page/Login/register_page.dart';
@@ -144,7 +145,10 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                                 borderSide: BorderSide(color: Colors.black26))),
                       ),
                       checkPhoneNumber
-                          ? errorTextWidget("Enter phone number")
+                          ? errorTextWidget(
+                            // "Enter phone number"
+                            translation(context).ent_ph
+                            )
                           : Container()
                     ],
                   ),
@@ -191,7 +195,10 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                         ),
                       ),
                       checkPassword
-                          ? errorTextWidget("Enter password")
+                          ? errorTextWidget(
+                            // "Enter password"
+                            translation(context).ent_pass,
+                            )
                           : Container(),
                     ],
                   ),
@@ -236,10 +243,11 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width,
                         color: Colors.black,
-                        child: const Center(
+                        child: Center(
                           child: Text(
-                            "Login",
-                            style: TextStyle(
+                            // "Login",
+                            translation(context).login,
+                            style: const TextStyle(
                               color: Colors.white,
                             ),
                           ),

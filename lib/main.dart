@@ -1,20 +1,17 @@
+// ignore_for_file: unused_element
+
 import 'package:flutter/material.dart';
 import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/data/create_database.dart';
 import 'package:gems_records/page/screen.dart';
 import 'package:gems_records/router/custom_router.dart';
-import 'package:gems_records/router/route_constants.dart';
+// import 'package:gems_records/router/route_constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:hive_flutter/adapters.dart';
+// import 'package:hive_flutter/adapters.dart';
 
 final _db = CreateDatabase.instance;
 
 void main() {
-  // await Hive.initFlutter();
-
-  // // ignore: unused_local_variable
-  // var box = await Hive.openBox('mybox');
-
   runApp(const MyApp());
 }
 
@@ -56,7 +53,6 @@ class _MyAppState extends State<MyApp> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateRoute: CustomRouter.generatedRoute,
-      // initialRoute: homeRoute,
       home: const Screen(),
       locale: _locale,
     );

@@ -1,7 +1,10 @@
+// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace, avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_acc.dart';
 import 'package:gems_records/data/create_database.dart';
@@ -160,9 +163,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               context,
               PageTransition(
                 type: PageTransitionType.leftToRight,
-                child: widget.id == 2
-                    ? const RegisterPage()
-                    : Home(id: widget.id),
+                child:
+                    widget.id == 2 ? const RegisterPage() : Home(id: widget.id),
               ),
             );
             return false;
@@ -242,7 +244,12 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                           ),
                         ),
                       ),
-                      checkName ? errorTextWidget("Enter name") : Container(),
+                      checkName
+                          ? errorTextWidget(
+                              // "Enter name"
+                              translation(context).ent_name,
+                            )
+                          : Container(),
                     ],
                   ),
                 ),
@@ -281,7 +288,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                       ),
                       checkPhone
-                          ? errorTextWidget("Enter phone number")
+                          ? errorTextWidget(
+                              // "Enter phone number",
+                              translation(context).ent_ph,
+                            )
                           : Container(),
                     ],
                   ),
@@ -328,7 +338,10 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         ),
                       ),
                       checkPassword
-                          ? errorTextWidget("Enter password")
+                          ? errorTextWidget(
+                              // "Enter password"
+                              translation(context).ent_pass,
+                            )
                           : Container(),
                     ],
                   ),
@@ -409,7 +422,11 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       color: Colors.black,
                       child: Center(
                         child: Text(
-                          widget.checkPage == 0 ? "Create" : "Save",
+                          widget.checkPage == 0
+                              // ?
+                              // "Create" : "Save",
+                              ? translation(context).create
+                              : translation(context).save,
                           style: const TextStyle(
                             color: Colors.white,
                           ),

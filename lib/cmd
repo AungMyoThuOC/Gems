@@ -1130,3 +1130,313 @@ appBar: PreferredSize(
 //           ),
 //         ),
 //       ),
+
+textfields.dart
+
+// Container(
+                //   child: Cameraopt(),
+                // ),
+                // MyButton(text: "Save", onPressed: onSave),
+
+custom_router.dart
+// case viewallRoute:
+      //   return MaterialPageRoute(builder: (_) => const ViewRecords());
+
+// case newrecRoute:
+      //   return MaterialPageRoute(
+      //       builder: (_) => NewRecod(
+      //             onSubmit: (String value) {}, onSave: () {  },
+      //           ));
+
+
+view_record_page.dart
+// const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.receipt_long_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).view_rec,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     // Navigator.pushNamed(context, viewallRoute);
+          //   },
+          // ),
+
+new_rec_page.dart
+// for price
+            // Container(
+            //     width: 150.0,
+            //     child: TextFormField(
+            //       initialValue: widget.update ? order.price.toString() : null,
+            //       autocorrect: false,
+            //       onSaved: (String value) {
+            //         price = int.parse(value);
+            //       },
+            //       validator: (value) {
+            //         if (value.isEmpty ||
+            //             !new RegExp(r'^[0-9]+$').hasMatch(value)) {
+            //           return 'Please enter valid price';
+            //         }
+            //       },
+            //       decoration: new InputDecoration(
+            //         labelText: "Price",
+            //         hintText: 'Price',
+            //         prefixText: "Rs.",
+            //       ),
+            //       keyboardType: TextInputType.number,
+            //     ),
+            //   ),
+ // 
+            // ignore: avoid_unnecessary_containers
+            // Container(
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(8.0),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.stretch,
+            //       children: [
+            //         const Text("Weight"),
+            //         TextFormField(
+            //           autovalidateMode: submitted
+            //               ? AutovalidateMode.onUserInteraction
+            //               : AutovalidateMode.disabled,
+            //           keyboardType: TextInputType.text,
+            //           controller: weightcont,
+            //           decoration: InputDecoration(
+            //             errorText: _weightText,
+            //             // labelText: "Type",
+            //           ),
+            //           onChanged: (text) => setState(() => text),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+
+language.dart
+// const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.receipt_long_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).view_rec,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, viewallRoute);
+          //   },
+          // ),
+
+home.dart
+
+// bool bottomNavigator = true;
+
+  // TextEditingController typecont = TextEditingController();
+  // TextEditingController weightcont = TextEditingController();
+  // TextEditingController pricecont = TextEditingController();
+  // TextEditingController fromwhomcont = TextEditingController();
+  // TextEditingController phonecont = TextEditingController();
+  // TextEditingController remarkcont = TextEditingController();
+
+  // final _myBox = Hive.box('mybox');
+  // GemDataBase db = GemDataBase();
+
+
+// if (_myBox.get("GemLIST") == null) {
+    //   db.createInitialData();
+    // } else {
+    //   db.loadData();
+    // }
+
+// void saveNewTask() {
+  //   setState(() {
+  //     db.GemList.add([typecont.text, false]);
+  //     typecont.clear();
+  //     weightcont.clear();
+  //     pricecont.clear();
+  //     fromwhomcont.clear();
+  //     phonecont.clear();
+  //     remarkcont.clear();
+  //   });
+  //   Navigator.of(context).pop();
+  //   db.updateDataBase();
+  // }
+
+  // void createNewTask() {
+  //   showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return DialogBox(
+  //           typecont: typecont,
+  //           weightcont: weightcont,
+  //           pricecont: pricecont,
+  //           whomcont: fromwhomcont,
+  //           phonecont: phonecont,
+  //           remarkcont: remarkcont,
+  //           onSave: saveNewTask,
+  //         );
+  //       });
+  // }
+
+  // void deleteTask(int index) {
+  //   setState(() {
+  //     db.GemList.removeAt(index);
+  //   });
+  //   db.updateDataBase();
+  // }
+
+  // void editTask(int index) {
+  //   setState(() {
+  //     // db.GemList.(index);
+  //   });
+  //   db.updateDataBase();
+  // }
+
+// floatingActionButton: (bottomNavigator == true)
+      //     ? SizedBox(
+      //         width: 45,
+      //         child: FloatingActionButton(
+      //           elevation: 0,
+      //           onPressed: createNewTask,
+      //           splashColor: Colors.red,
+      //           child: const Icon(
+      //             Icons.add,
+      //             color: Colors.white,
+      //           ),
+      //         ),
+      //       )
+      //     : null,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      // body: Padding(
+      //   padding: const EdgeInsets.all(8.0),
+      //   child: Column(
+      //     children: [
+      //       Center(child: _main(context)),
+      //       ListView.builder(
+      //         shrinkWrap: true,
+      //         itemCount: db.GemList.length,
+      //         itemBuilder: (context, index) {
+      //           return GemTile(
+      //             taskName: db.GemList[index][0],
+      //             deleteFunction: (context) => deleteTask(index),
+      //             editFunction: (context) => editTask(index),
+      //           );
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
+
+// _main(BuildContext context) {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: Column(
+  //       children: [
+  //         TextFormField(
+  //           keyboardType: TextInputType.text,
+  //           controller: sercontr,
+  //           style: const TextStyle(color: Colors.black),
+  //           decoration: InputDecoration(
+  //               hintText: "Search from Whom...",
+  //               hintStyle: const TextStyle(
+  //                 color: Colors.grey,
+  //               ),
+  //               enabledBorder: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(5),
+  //                 borderSide: const BorderSide(
+  //                     width: 1, color: Color.fromARGB(225, 224, 224, 244)),
+  //               ),
+  //               focusedBorder: OutlineInputBorder(
+  //                   borderRadius: BorderRadius.circular(5),
+  //                   borderSide: const BorderSide(
+  //                       width: 1, color: Color.fromARGB(255, 177, 177, 177))),
+  //               prefixIcon: Padding(
+  //                 padding: const EdgeInsets.only(right: 10),
+  //                 child: IconButton(
+  //                   onPressed: () {},
+  //                   icon: const Icon(
+  //                     Icons.search_outlined,
+  //                     size: 20,
+  //                   ),
+  //                   splashRadius: 2,
+  //                 ),
+  //               ),
+  //               suffixIcon: IconButton(
+  //                 onPressed: sercontr.clear,
+  //                 icon: const Icon(
+  //                   Icons.clear_outlined,
+  //                   size: 20,
+  //                 ),
+  //                 splashRadius: 2,
+  //               )),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+
+// const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.receipt_long_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).view_rec,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, viewallRoute);
+          //   },
+          // ),
+
+chg-pass.dart
+
+
+
+ // const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.receipt_long_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).view_rec,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, viewallRoute);
+          //   },
+          // ),
+
+about.dart
+
+// const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.receipt_long_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).view_rec,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, viewallRoute);
+          //   },
+          // ),

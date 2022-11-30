@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gems_records/classes/language_constants.dart';
 
 class NotFoundPage extends StatefulWidget {
   const NotFoundPage({Key? key}) : super(key: key);
@@ -12,10 +13,12 @@ class _NotFoundPageState extends State<NotFoundPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Not Found"),
+        title: Text(translation(context).not_found)
+        // const Text("Not Found"),
       ),
-      body: const Center(
-        child: Text("Sorry, We couldn't found your page"),
+      body: Center(
+        child: Text(translation(context).s_w_c_n_f_y_p)
+        // Text("Sorry, We couldn't found your page"),
       ),
     );
   }

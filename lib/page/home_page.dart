@@ -1,3 +1,5 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'dart:io';
 // import 'dart:ui';
 
@@ -71,60 +73,12 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    // if (_myBox.get("GemLIST") == null) {
-    //   db.createInitialData();
-    // } else {
-    //   db.loadData();
-    // }
     _getAcc();
     _getData();
 
     super.initState();
   }
 
-  // void saveNewTask() {
-  //   setState(() {
-  //     db.GemList.add([typecont.text, false]);
-  //     typecont.clear();
-  //     weightcont.clear();
-  //     pricecont.clear();
-  //     fromwhomcont.clear();
-  //     phonecont.clear();
-  //     remarkcont.clear();
-  //   });
-  //   Navigator.of(context).pop();
-  //   db.updateDataBase();
-  // }
-
-  // void createNewTask() {
-  //   showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return DialogBox(
-  //           typecont: typecont,
-  //           weightcont: weightcont,
-  //           pricecont: pricecont,
-  //           whomcont: fromwhomcont,
-  //           phonecont: phonecont,
-  //           remarkcont: remarkcont,
-  //           onSave: saveNewTask,
-  //         );
-  //       });
-  // }
-
-  // void deleteTask(int index) {
-  //   setState(() {
-  //     db.GemList.removeAt(index);
-  //   });
-  //   db.updateDataBase();
-  // }
-
-  // void editTask(int index) {
-  //   setState(() {
-  //     // db.GemList.(index);
-  //   });
-  //   db.updateDataBase();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -346,18 +300,19 @@ class _HomeState extends State<Home> {
                                                 setState(() {});
                                               },
                                               child: Row(
-                                                children: const [
-                                                  Icon(
+                                                children: [
+                                                  const Icon(
                                                     Icons.edit,
                                                     color: Colors.black,
                                                     size: 15,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 15,
                                                   ),
                                                   Text(
-                                                    "Edit",
-                                                    style: TextStyle(
+                                                    // "Edit",
+                                                    translation(context).edit,
+                                                    style: const TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 15,
                                                     ),
@@ -373,7 +328,8 @@ class _HomeState extends State<Home> {
                                                     context: context,
                                                     builder: (_) => AlertDialog(
                                                           title: Text(
-                                                            "Are you sure you want to delete this type?",
+                                                            // "Are you sure you want to delete this type?",
+                                                            translation(context).a_y_s_y_w_t_d_t_t,
                                                             style: TextStyle(
                                                                 fontFamily:
                                                                     ubuntuFamily),
@@ -391,7 +347,8 @@ class _HomeState extends State<Home> {
                                                                           .start,
                                                                   children: [
                                                                     Text(
-                                                                      "Type :",
+                                                                      // "Type :",
+                                                                      translation(context).type,
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
@@ -473,14 +430,15 @@ class _HomeState extends State<Home> {
                                                                 color: Colors
                                                                     .black,
                                                                 child:
-                                                                    const Padding(
+                                                                    Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               15),
                                                                   child: Text(
-                                                                    "No",
-                                                                    style: TextStyle(
+                                                                    // "No",
+                                                                    translation(context).no,
+                                                                    style: const TextStyle(
                                                                         color: Colors
                                                                             .white70),
                                                                   ),
@@ -508,15 +466,16 @@ class _HomeState extends State<Home> {
                                                                 color: Colors
                                                                     .black,
                                                                 child:
-                                                                    const Padding(
+                                                                     Padding(
                                                                   padding:
-                                                                      EdgeInsets
+                                                                      const EdgeInsets
                                                                           .all(
                                                                               15),
                                                                   child: Text(
-                                                                    "Yes",
+                                                                    // "Yes",
+                                                                    translation(context).yes,
                                                                     style:
-                                                                        TextStyle(
+                                                                        const TextStyle(
                                                                       color: Colors
                                                                           .white,
                                                                     ),
@@ -529,18 +488,19 @@ class _HomeState extends State<Home> {
                                                 setState(() {});
                                               },
                                               child: Row(
-                                                children: const [
-                                                  Icon(
+                                                children: [
+                                                  const Icon(
                                                     Icons.delete,
                                                     color: Colors.black,
                                                     size: 15,
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     width: 15,
                                                   ),
                                                   Text(
-                                                    "Delete",
-                                                    style: TextStyle(
+                                                    // "Delete",
+                                                    translation(context).delete,
+                                                    style: const TextStyle(
                                                       color: Colors.black,
                                                       fontSize: 15,
                                                     ),
@@ -563,7 +523,8 @@ class _HomeState extends State<Home> {
                         ? Padding(
                             padding: const EdgeInsets.only(top: 15),
                             child: Text(
-                              "Item don't have",
+                              // "Item don't have",
+                              translation(context).itm_don_ha,
                               style: TextStyle(
                                 color: Colors.black54,
                                 fontSize: 20,
@@ -575,7 +536,8 @@ class _HomeState extends State<Home> {
                             ? Padding(
                                 padding: const EdgeInsets.only(top: 25),
                                 child: Text(
-                                  "No item",
+                                  // "No item",
+                                  translation(context).no_item,
                                   style: TextStyle(
                                     color: Colors.black54,
                                     fontSize: 20,
@@ -715,18 +677,19 @@ class _HomeState extends State<Home> {
                                                         setState(() {});
                                                       },
                                                       child: Row(
-                                                        children: const [
-                                                          Icon(
+                                                        children: [
+                                                          const Icon(
                                                             Icons.edit,
                                                             color: Colors.black,
                                                             size: 15,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 15,
                                                           ),
                                                           Text(
-                                                            "Edit",
-                                                            style: TextStyle(
+                                                            // "Edit",
+                                                            translation(context).edit,
+                                                            style: const TextStyle(
                                                               color:
                                                                   Colors.black,
                                                               fontSize: 15,
@@ -746,7 +709,8 @@ class _HomeState extends State<Home> {
                                                                     AlertDialog(
                                                                       title:
                                                                           Text(
-                                                                        "Are you sure you want to delete this type",
+                                                                        // "Are you sure you want to delete this type",
+                                                                        translation(context).a_y_s_y_w_t_d_t_t,
                                                                         style:
                                                                             TextStyle(
                                                                           fontFamily:
@@ -769,7 +733,8 @@ class _HomeState extends State<Home> {
                                                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      "Type : ",
+                                                                                      // "Type : ",
+                                                                                      translation(context).type,
                                                                                       style: TextStyle(
                                                                                         fontSize: 15,
                                                                                         fontFamily: ubuntuFamily,
@@ -794,7 +759,8 @@ class _HomeState extends State<Home> {
                                                                                   mainAxisAlignment: MainAxisAlignment.start,
                                                                                   children: [
                                                                                     Text(
-                                                                                      "From Whom :",
+                                                                                      // "From Whom :",
+                                                                                      translation(context).from_whom,
                                                                                       style: TextStyle(
                                                                                         fontSize: 15,
                                                                                         fontFamily: ubuntuFamily,
@@ -832,11 +798,12 @@ class _HomeState extends State<Home> {
                                                                             color:
                                                                                 Colors.black,
                                                                             child:
-                                                                                const Padding(
-                                                                              padding: EdgeInsets.all(15),
+                                                                                 Padding(
+                                                                              padding: const EdgeInsets.all(15),
                                                                               child: Text(
-                                                                                "No",
-                                                                                style: TextStyle(
+                                                                                // "No",
+                                                                                translation(context).no,
+                                                                                style: const TextStyle(
                                                                                   color: Colors.white70,
                                                                                 ),
                                                                               ),
@@ -862,11 +829,12 @@ class _HomeState extends State<Home> {
                                                                             color:
                                                                                 Colors.black,
                                                                             child:
-                                                                                const Padding(
-                                                                              padding: EdgeInsets.all(15),
+                                                                                Padding(
+                                                                              padding: const EdgeInsets.all(15),
                                                                               child: Text(
-                                                                                "Yes",
-                                                                                style: TextStyle(
+                                                                                // "Yes",
+                                                                                translation(context).yes,
+                                                                                style: const TextStyle(
                                                                                   color: Colors.white,
                                                                                 ),
                                                                               ),
@@ -878,18 +846,19 @@ class _HomeState extends State<Home> {
                                                         setState(() {});
                                                       },
                                                       child: Row(
-                                                        children: const [
-                                                          Icon(
+                                                        children:  [
+                                                          const Icon(
                                                             Icons.delete,
                                                             color: Colors.black,
                                                             size: 15,
                                                           ),
-                                                          SizedBox(
+                                                          const SizedBox(
                                                             width: 15,
                                                           ),
                                                           Text(
-                                                            "Delete",
-                                                            style: TextStyle(
+                                                            // "Delete",
+                                                            translation(context).delete,
+                                                            style: const TextStyle(
                                                               color:
                                                                   Colors.black,
                                                               fontSize: 15,
@@ -937,90 +906,8 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      // floatingActionButton: (bottomNavigator == true)
-      //     ? SizedBox(
-      //         width: 45,
-      //         child: FloatingActionButton(
-      //           elevation: 0,
-      //           onPressed: createNewTask,
-      //           splashColor: Colors.red,
-      //           child: const Icon(
-      //             Icons.add,
-      //             color: Colors.white,
-      //           ),
-      //         ),
-      //       )
-      //     : null,
-      // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      // body: Padding(
-      //   padding: const EdgeInsets.all(8.0),
-      //   child: Column(
-      //     children: [
-      //       Center(child: _main(context)),
-      //       ListView.builder(
-      //         shrinkWrap: true,
-      //         itemCount: db.GemList.length,
-      //         itemBuilder: (context, index) {
-      //           return GemTile(
-      //             taskName: db.GemList[index][0],
-      //             deleteFunction: (context) => deleteTask(index),
-      //             editFunction: (context) => editTask(index),
-      //           );
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
-
-  // _main(BuildContext context) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(8.0),
-  //     child: Column(
-  //       children: [
-  //         TextFormField(
-  //           keyboardType: TextInputType.text,
-  //           controller: sercontr,
-  //           style: const TextStyle(color: Colors.black),
-  //           decoration: InputDecoration(
-  //               hintText: "Search from Whom...",
-  //               hintStyle: const TextStyle(
-  //                 color: Colors.grey,
-  //               ),
-  //               enabledBorder: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(5),
-  //                 borderSide: const BorderSide(
-  //                     width: 1, color: Color.fromARGB(225, 224, 224, 244)),
-  //               ),
-  //               focusedBorder: OutlineInputBorder(
-  //                   borderRadius: BorderRadius.circular(5),
-  //                   borderSide: const BorderSide(
-  //                       width: 1, color: Color.fromARGB(255, 177, 177, 177))),
-  //               prefixIcon: Padding(
-  //                 padding: const EdgeInsets.only(right: 10),
-  //                 child: IconButton(
-  //                   onPressed: () {},
-  //                   icon: const Icon(
-  //                     Icons.search_outlined,
-  //                     size: 20,
-  //                   ),
-  //                   splashRadius: 2,
-  //                 ),
-  //               ),
-  //               suffixIcon: IconButton(
-  //                 onPressed: sercontr.clear,
-  //                 icon: const Icon(
-  //                   Icons.clear_outlined,
-  //                   size: 20,
-  //                 ),
-  //                 splashRadius: 2,
-  //               )),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   Container _drawerList() {
     // ignore: no_leading_underscores_for_local_identifiers
@@ -1074,22 +961,6 @@ class _HomeState extends State<Home> {
               Navigator.pushNamed(context, homeRoute);
             },
           ),
-          // const Divider(),
-          // ListTile(
-          //   leading: const Icon(
-          //     Icons.receipt_long_outlined,
-          //     color: Colors.red,
-          //     size: 20,
-          //   ),
-          //   title: Text(
-          //     translation(context).view_rec,
-          //     style: _textStyle,
-          //   ),
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //     Navigator.pushNamed(context, viewallRoute);
-          //   },
-          // ),
           const Divider(),
           ListTile(
             leading: const Icon(

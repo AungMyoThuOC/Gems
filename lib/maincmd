@@ -220,3 +220,13 @@ enum DrawerSections {
   chg_pass,
   about,
 }
+
+
+// main.dar
+// await Hive.initFlutter();
+
+  // // ignore: unused_local_variable
+  // var box = await Hive.openBox('mybox');
+
+
+// initialRoute: homeRoute,

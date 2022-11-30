@@ -1,9 +1,12 @@
+// ignore_for_file: prefer_final_fields, sized_box_for_whitespace
+
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_database.dart';
 import 'package:gems_records/page/Record/add_edit_rec_page.dart';
@@ -11,6 +14,7 @@ import 'package:gems_records/page/home_page.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 
+// ignore: must_be_immutable
 class DetailPage extends StatefulWidget {
   int id;
   List list;
@@ -112,7 +116,8 @@ class _DetailPageState extends State<DetailPage> {
           },
         ),
         title: Text(
-          "View item",
+          // "View item",
+          translation(context).view_item,
           style: TextStyle(
             color: Colors.black,
             fontFamily: ubuntuFamily,
@@ -139,18 +144,19 @@ class _DetailPageState extends State<DetailPage> {
                       setState(() {});
                     },
                     child: Row(
-                      children: const [
-                        Icon(
+                      children:  [
+                        const Icon(
                           Icons.edit,
                           color: Colors.black,
                           size: 15,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Text(
-                          "Edit",
-                          style: TextStyle(
+                          // "Edit",
+                          translation(context).edit,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 15,
                           ),
@@ -165,7 +171,8 @@ class _DetailPageState extends State<DetailPage> {
                           context: context,
                           builder: (_) => AlertDialog(
                                 title: Text(
-                                  "Are you sure you want to delete this type?",
+                                  // "Are you sure you want to delete this type?",
+                                  translation(context).a_y_s_y_w_t_d_t_t,
                                   style: TextStyle(
                                     fontFamily: ubuntuFamily,
                                   ),
@@ -181,7 +188,8 @@ class _DetailPageState extends State<DetailPage> {
                                             MainAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Type : ",
+                                            // "Type : ",
+                                            translation(context).typ,
                                             style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: ubuntuFamily,
@@ -208,7 +216,8 @@ class _DetailPageState extends State<DetailPage> {
                                             MainAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "From Whom : ",
+                                            // "From Whom : ",
+                                            translation(context).from_whom,
                                             style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: ubuntuFamily,
@@ -241,11 +250,12 @@ class _DetailPageState extends State<DetailPage> {
                                     },
                                     child: Container(
                                       color: Colors.black,
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(15),
+                                      child:  Padding(
+                                        padding: const EdgeInsets.all(15),
                                         child: Text(
-                                          "No",
-                                          style: TextStyle(
+                                          // "No",
+                                          translation(context).no,
+                                          style: const TextStyle(
                                             color: Colors.white70,
                                           ),
                                         ),
@@ -269,11 +279,12 @@ class _DetailPageState extends State<DetailPage> {
                                     },
                                     child: Container(
                                       color: Colors.black,
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(15),
+                                      child:  Padding(
+                                        padding: const EdgeInsets.all(15),
                                         child: Text(
-                                          "Yes",
-                                          style: TextStyle(color: Colors.white),
+                                          // "Yes",
+                                          translation(context).yes,
+                                          style: const TextStyle(color: Colors.white),
                                         ),
                                       ),
                                     ),
@@ -283,18 +294,19 @@ class _DetailPageState extends State<DetailPage> {
                       setState(() {});
                     },
                     child: Row(
-                      children: const [
-                        Icon(
+                      children:  [
+                        const Icon(
                           Icons.delete,
                           color: Colors.black,
                           size: 15,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Text(
-                          "Delete",
-                          style: TextStyle(
+                          // "Delete",
+                          translation(context).delete,
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 15,
                           ),
@@ -327,25 +339,39 @@ class _DetailPageState extends State<DetailPage> {
                 child: Column(
                   children: [
                     _text(
-                        "Date",
+                        // "Date",
+                        translation(context).date,
                         DateFormat("dd-MM-yyyy").format(DateTime.parse(
                             getIndexDashboardList[0]["record_date"]))),
-                    _text("Type", getIndexDashboardList[0]["record_type"]),
-                    _text("From Whom",
-                        getIndexDashboardList[0]["record_fromWhom"]),
-                    _text("Weight", getIndexDashboardList[0]["record_weight"]),
                     _text(
-                        "Price",
+                      // "Type",
+                      translation(context).typ,
+                       getIndexDashboardList[0]["record_type"]),
+                    _text(
+                      // "From Whom",
+                      translation(context).froWhom,
+                        getIndexDashboardList[0]["record_fromWhom"]),
+                    _text(
+                      // "Weight",
+                      translation(context).weg,
+                       getIndexDashboardList[0]["record_weight"]),
+                    _text(
+                        // "Price",
+                        translation(context).pri,
                         NumberFormat.decimalPattern()
                             .format(getIndexDashboardList[0]["record_price"])
                             .toString()),
                     _text(
-                        "Phone",
+                        // "Phone",
+                        translation(context).ph,
                         getIndexDashboardList[0]["checkZero"] == "true"
                             ? "0${getIndexDashboardList[0]["record_phoneNum"]}"
                             : getIndexDashboardList[0]["record_phoneNum"]
                                 .toString()),
-                    _text("Remark", getIndexDashboardList[0]["record_remark"]),
+                    _text(
+                      // "Remark",
+                      translation(context).rmk,
+                       getIndexDashboardList[0]["record_remark"]),
                     imageList.isEmpty
                         ? Container()
                         : GridView.count(
