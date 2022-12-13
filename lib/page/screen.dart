@@ -55,7 +55,7 @@ class StartState extends State<Screen> {
     return Scaffold(
       body: Center(
         child: Image.asset(
-          "images/",
+          "images/gems.jpg",
           width: 200,
           height: 200,
         ),

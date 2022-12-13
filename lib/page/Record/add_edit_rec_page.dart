@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, unused_field, avoid_print, sized_box_for_whitespace, avoid_unnecessary_containers
+// ignore_for_file: non_constant_identifier_names, unused_field, avoid_print, sized_box_for_whitespace, avoid_unnecessary_containers, library_private_types_in_public_api
 
 import 'dart:convert';
 import 'dart:io';
@@ -28,7 +28,7 @@ class EditRecPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<EditRecPage> createState() => _EditRecPageState();
+  _EditRecPageState createState() => _EditRecPageState();
 }
 
 class _EditRecPageState extends State<EditRecPage> {
@@ -170,9 +170,8 @@ class _EditRecPageState extends State<EditRecPage> {
                             // if (id == 0) {
 
                             // }
-                            setState(() {
-                              _takePhote();
-                            });
+                            _takePhote();
+                            setState(() {});
                           },
                           child: Container(
                             color: Colors.white30,
@@ -188,8 +187,11 @@ class _EditRecPageState extends State<EditRecPage> {
                                     height: 5,
                                   ),
                                   Text(
+                                    // id == 0 ? "Take Phote" : "Take Video",
                                     // "Take Photo",
-                                    translation(context).take_photo,
+                                    id == 0
+                                      ? translation(context).take_photo
+                                      : "Take video",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: Colors.black,
@@ -204,9 +206,8 @@ class _EditRecPageState extends State<EditRecPage> {
                         GestureDetector(
                           onTap: () {
                             Navigator.pop(context);
-                            setState(() {
-                              _selectMultiImage();
-                            });
+                            _selectMultiImage();
+                            setState(() {});
                           },
                           child: Container(
                             color: Colors.white30,
@@ -215,7 +216,7 @@ class _EditRecPageState extends State<EditRecPage> {
                               child: Column(
                                 children: [
                                   Image.asset(
-                                    "images/",
+                                    "images/gallary.png",
                                     width: 30,
                                     height: 30,
                                   ),
@@ -260,12 +261,12 @@ class _EditRecPageState extends State<EditRecPage> {
     }
     var record_map = Record(
         date,
-        _typeController,
-        _weightController,
+        _typeController.text,
+        _weightController.text,
         int.parse(_priceController.text),
         _fromWhomController,
         int.parse(_phonecontroller.text),
-        _remarkController,
+        _remarkController.text,
         jsonEncode(record_image_list),
         firstImage,
         secondImage,
@@ -334,10 +335,10 @@ class _EditRecPageState extends State<EditRecPage> {
           centerTitle: true,
           elevation: 0.0,
           title: Text(
-            widget.type == -1 
-            // ? "New Item" : "Edit Item",
-            ? translation(context).new_item
-            : translation(context).edit_item,
+            widget.type == -1
+                // ? "New Item" : "Edit Item",
+                ? translation(context).new_item
+                : translation(context).edit_item,
             style: TextStyle(color: Colors.black, fontFamily: ubuntuFamily),
           ),
           leading: BackButton(
@@ -462,17 +463,16 @@ class _EditRecPageState extends State<EditRecPage> {
                       ),
                       checkWeight
                           ? errorTextWidget(
-                            // "Enter weight",
-                            translation(context).ent_wei,
+                              // "Enter weight",
+                              translation(context).ent_wei,
                             )
                           : Container(),
                     ],
                   ),
                 ),
                 _titleTextWidget(
-                  // "Price",
-                  translation(context).pri
-                  ),
+                    // "Price",
+                    translation(context).pri),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -503,16 +503,15 @@ class _EditRecPageState extends State<EditRecPage> {
                         ),
                       ),
                       checkPrice ? errorTextWidget(
-                        // "Enter price"
-                        translation(context).ent_pri
-                        ) : Container(),
+                          // "Enter price"
+                          translation(context).ent_pri) : Container(),
                     ],
                   ),
                 ),
                 _titleTextWidget(
                   // "From Whom",
                   translation(context).froWhom,
-                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -538,17 +537,16 @@ class _EditRecPageState extends State<EditRecPage> {
                       ),
                       checkFromWhom
                           ? errorTextWidget(
-                            // "Enter from whom",
-                            translation(context).ent_froWho,
+                              // "Enter from whom",
+                              translation(context).ent_froWho,
                             )
                           : Container(),
                     ],
                   ),
                 ),
                 _titleTextWidget(
-                  // "Phone",
-                  translation(context).ph
-                  ),
+                    // "Phone",
+                    translation(context).ph),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Column(
@@ -580,17 +578,16 @@ class _EditRecPageState extends State<EditRecPage> {
                       ),
                       checkPhone
                           ? errorTextWidget(
-                            // "Enter phone number"
-                            translation(context).ent_ph,
+                              // "Enter phone number"
+                              translation(context).ent_ph,
                             )
                           : Container(),
                     ],
                   ),
                 ),
                 _titleTextWidget(
-                  // "Remark"
-                  translation(context).rmk
-                  ),
+                    // "Remark"
+                    translation(context).rmk),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: TextField(

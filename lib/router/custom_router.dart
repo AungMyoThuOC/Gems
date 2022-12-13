@@ -18,8 +18,8 @@ class CustomRouter {
         return MaterialPageRoute(builder: (_) => Home(id: widget.id,));   
       case languageRoute:
         return MaterialPageRoute(builder: (_) => const LanguagePage());
-      case changpassRout:
-        return MaterialPageRoute(builder: (_) => const Change_Password());
+      // case changpassRout:
+      //   return MaterialPageRoute(builder: (_) => const Change_Password());
       case aboutRoute:
         return MaterialPageRoute(builder: (_) => const About());
       default:

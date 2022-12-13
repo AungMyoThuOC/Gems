@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_database.dart';
+import 'package:gems_records/page/Login/create_acc_page.dart';
 import 'package:gems_records/page/Login/register_page.dart';
 import 'package:gems_records/page/home_page.dart';
 import 'package:page_transition/page_transition.dart';
@@ -107,7 +108,7 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
               children: [
                 Center(
                   child: Image.asset(
-                    "image/",
+                    "images/login.png",
                     width: 200,
                     height: 200,
                   ),
@@ -144,12 +145,9 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                             enabledBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black26))),
                       ),
-                      checkPhoneNumber
-                          ? errorTextWidget(
-                            // "Enter phone number"
-                            translation(context).ent_ph
-                            )
-                          : Container()
+                      checkPhoneNumber ? errorTextWidget(
+                          // "Enter phone number"
+                          translation(context).ent_ph) : Container()
                     ],
                   ),
                 ),
@@ -169,7 +167,7 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                           });
                         },
                         decoration: InputDecoration(
-                          helperText: "Passwrod",
+                          hintText: "Passwrod",
                           focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.black26),
                           ),
@@ -196,8 +194,8 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                       ),
                       checkPassword
                           ? errorTextWidget(
-                            // "Enter password"
-                            translation(context).ent_pass,
+                              // "Enter password"
+                              translation(context).ent_pass,
                             )
                           : Container(),
                     ],
@@ -206,13 +204,49 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Text(
+                      "Don't have an account",
+                      style: TextStyle(color: Colors.blueGrey),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                child: CreateAccountPage(
+                                  checkPage: 0,
+                                  id: 2,
+                                )));
+                                setState(() {
+                                  
+                                });
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        height: MediaQuery.of(context).size.height * 0.07,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            translation(context).create_account
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.only(bottom: 16, left: 16, right: 16),
                   child: Container(
                     color: Colors.black,
                     height: MediaQuery.of(context).size.height * 0.07,
-                     child: GestureDetector(
+                    child: GestureDetector(
                       onTap: () {
                         if (_phoneNoController.text == "" &&
                             _passwordController.text == "") {
@@ -239,7 +273,7 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
                         }
                         setState(() {});
                       },
-                       child: Container(
+                      child: Container(
                         height: MediaQuery.of(context).size.height * 0.07,
                         width: MediaQuery.of(context).size.width,
                         color: Colors.black,
@@ -264,4 +298,3 @@ class _LoginAccountPageState extends State<LoginAccountPage> {
     );
   }
 }
-

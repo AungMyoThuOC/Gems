@@ -125,22 +125,22 @@ class _LanguagePageState extends State<LanguagePage> {
             },
           ),
           const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.lock_reset_outlined,
-              color: Colors.red,
-              size: 20,
-            ),
-            title: Text(
-              translation(context).chg_pass,
-              style: _textStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, changpassRout);
-            },
-          ),
-          const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.lock_reset_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).chg_pass,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, changpassRout);
+          //   },
+          // ),
+          // const Divider(),
           ListTile(
             leading: const Icon(
               Icons.info_outline,

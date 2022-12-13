@@ -189,7 +189,7 @@ class _DetailPageState extends State<DetailPage> {
                                         children: [
                                           Text(
                                             // "Type : ",
-                                            translation(context).typ,
+                                            translation(context).type,
                                             style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: ubuntuFamily,
@@ -290,7 +290,8 @@ class _DetailPageState extends State<DetailPage> {
                                     ),
                                   )
                                 ],
-                              ));
+                              )
+                              );
                       setState(() {});
                     },
                     child: Row(

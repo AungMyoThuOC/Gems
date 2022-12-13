@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:gems_records/classes/language_constants.dart';
 import 'package:gems_records/common.dart';
 import 'package:gems_records/data/create_database.dart';
+import 'package:gems_records/page/Login/create_acc_page.dart';
 // import 'package:gems_records/data/database.dart';
 import 'package:gems_records/page/Record/add_edit_rec_page.dart';
 import 'package:gems_records/page/home/details_page.dart';
@@ -26,7 +27,7 @@ class Home extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -79,7 +80,6 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Listener(
@@ -88,10 +88,87 @@ class _HomeState extends State<Home> {
       // ignore: sort_child_properties_last
       child: Scaffold(
         appBar: AppBar(
-          title: Text(translation(context).home),
-          centerTitle: true,
-          elevation: 0.0,
-        ),
+            elevation: 0.0,
+            centerTitle: true,
+            title: widget.id == 0
+                ? Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                  child: CreateAccountPage(
+                                    checkPage: 0,
+                                    id: widget.id,
+                                  )));
+                          setState(() {});
+                        },
+                        child: CircleAvatar(
+                          backgroundImage: const AssetImage(
+                            "images/person.jpg",
+                          ),
+                          backgroundColor: Colors.grey[350],
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Hello, ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                          fontFamily: ubuntuFamily,
+                          fontSize: 25,
+                        ),
+                      )
+                    ],
+                  )
+                : getAccountList.isEmpty
+                    ? Container()
+                    : Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  PageTransition(
+                                      type: PageTransitionType.rightToLeft,
+                                      child: CreateAccountPage(
+                                        checkPage: 1,
+                                        id: widget.id,
+                                      )));
+                              setState(() {});
+                            },
+                            child: getAccountList[0] ["image"] == ""
+                              ? CircleAvatar(
+                                backgroundImage: const AssetImage(
+                                  "images/person.jpg"
+                                ),
+                                backgroundColor: Colors.grey[350],
+                              )
+                              : CircleAvatar(
+                                backgroundImage: FileImage(
+                                  File(getAccountList[0]["image"]),
+                                ),
+                              ),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Hello, ${getAccountList[0]["name"]}",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontFamily: ubuntuFamily,
+                              fontSize: 20,
+                            ),
+                          )
+                        ],
+                      )),
         drawer: Drawer(
           child: _drawerList(),
         ),
@@ -180,7 +257,7 @@ class _HomeState extends State<Home> {
                         focusedBorder: const OutlineInputBorder()),
                   ),
                 ),
-                searchList.isEmpty
+                searchList.isNotEmpty
                     ? ListView.builder(
                         shrinkWrap: true,
                         itemCount: searchList.length,
@@ -329,7 +406,8 @@ class _HomeState extends State<Home> {
                                                     builder: (_) => AlertDialog(
                                                           title: Text(
                                                             // "Are you sure you want to delete this type?",
-                                                            translation(context).a_y_s_y_w_t_d_t_t,
+                                                            translation(context)
+                                                                .a_y_s_y_w_t_d_t_t,
                                                             style: TextStyle(
                                                                 fontFamily:
                                                                     ubuntuFamily),
@@ -348,7 +426,9 @@ class _HomeState extends State<Home> {
                                                                   children: [
                                                                     Text(
                                                                       // "Type :",
-                                                                      translation(context).type,
+                                                                      translation(
+                                                                              context)
+                                                                          .type,
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
@@ -384,7 +464,8 @@ class _HomeState extends State<Home> {
                                                                           .start,
                                                                   children: [
                                                                     Text(
-                                                                      "From Whom :",
+                                                                      // "From Whom :",
+                                                                      translation(context).from_whom,
                                                                       style:
                                                                           TextStyle(
                                                                         fontSize:
@@ -429,15 +510,15 @@ class _HomeState extends State<Home> {
                                                               child: Container(
                                                                 color: Colors
                                                                     .black,
-                                                                child:
-                                                                    Padding(
+                                                                child: Padding(
                                                                   padding:
                                                                       const EdgeInsets
-                                                                          .all(
-                                                                              15),
+                                                                          .all(15),
                                                                   child: Text(
                                                                     // "No",
-                                                                    translation(context).no,
+                                                                    translation(
+                                                                            context)
+                                                                        .no,
                                                                     style: const TextStyle(
                                                                         color: Colors
                                                                             .white70),
@@ -465,15 +546,15 @@ class _HomeState extends State<Home> {
                                                               child: Container(
                                                                 color: Colors
                                                                     .black,
-                                                                child:
-                                                                     Padding(
+                                                                child: Padding(
                                                                   padding:
                                                                       const EdgeInsets
-                                                                          .all(
-                                                                              15),
+                                                                          .all(15),
                                                                   child: Text(
                                                                     // "Yes",
-                                                                    translation(context).yes,
+                                                                    translation(
+                                                                            context)
+                                                                        .yes,
                                                                     style:
                                                                         const TextStyle(
                                                                       color: Colors
@@ -521,7 +602,7 @@ class _HomeState extends State<Home> {
                       )
                     : searchCheck == true
                         ? Padding(
-                            padding: const EdgeInsets.only(top: 15),
+                            padding: const EdgeInsets.only(top: 25),
                             child: Text(
                               // "Item don't have",
                               translation(context).itm_don_ha,
@@ -688,8 +769,10 @@ class _HomeState extends State<Home> {
                                                           ),
                                                           Text(
                                                             // "Edit",
-                                                            translation(context).edit,
-                                                            style: const TextStyle(
+                                                            translation(context)
+                                                                .edit,
+                                                            style:
+                                                                const TextStyle(
                                                               color:
                                                                   Colors.black,
                                                               fontSize: 15,
@@ -710,7 +793,8 @@ class _HomeState extends State<Home> {
                                                                       title:
                                                                           Text(
                                                                         // "Are you sure you want to delete this type",
-                                                                        translation(context).a_y_s_y_w_t_d_t_t,
+                                                                        translation(context)
+                                                                            .a_y_s_y_w_t_d_t_t,
                                                                         style:
                                                                             TextStyle(
                                                                           fontFamily:
@@ -798,7 +882,7 @@ class _HomeState extends State<Home> {
                                                                             color:
                                                                                 Colors.black,
                                                                             child:
-                                                                                 Padding(
+                                                                                Padding(
                                                                               padding: const EdgeInsets.all(15),
                                                                               child: Text(
                                                                                 // "No",
@@ -846,7 +930,7 @@ class _HomeState extends State<Home> {
                                                         setState(() {});
                                                       },
                                                       child: Row(
-                                                        children:  [
+                                                        children: [
                                                           const Icon(
                                                             Icons.delete,
                                                             color: Colors.black,
@@ -857,8 +941,10 @@ class _HomeState extends State<Home> {
                                                           ),
                                                           Text(
                                                             // "Delete",
-                                                            translation(context).delete,
-                                                            style: const TextStyle(
+                                                            translation(context)
+                                                                .delete,
+                                                            style:
+                                                                const TextStyle(
                                                               color:
                                                                   Colors.black,
                                                               fontSize: 15,
@@ -978,22 +1064,22 @@ class _HomeState extends State<Home> {
             },
           ),
           const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.lock_reset_outlined,
-              color: Colors.red,
-              size: 20,
-            ),
-            title: Text(
-              translation(context).chg_pass,
-              style: _textStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, changpassRout);
-            },
-          ),
-          const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.lock_reset_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).chg_pass,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, changpassRout);
+          //   },
+          // ),
+          // const Divider(),
           ListTile(
             leading: const Icon(
               Icons.info_outline,

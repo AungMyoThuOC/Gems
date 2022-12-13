@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gems_records/classes/language_constants.dart';
+import 'package:gems_records/page/Login/login_page.dart';
 import 'package:gems_records/router/route_constants.dart';
+import 'package:page_transition/page_transition.dart';
 
 // ignore: camel_case_types
 class Change_Password extends StatefulWidget {
@@ -38,22 +40,48 @@ class _Change_PasswordState extends State<Change_Password> {
           const SizedBox(
             height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            // ignore: sized_box_for_whitespace
+          GestureDetector(
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: const LoginAccountPage(),
+                  ));
+                  setState(() {
+                    
+                  });
+            },
             child: Container(
-              width: double.infinity,
-              height: 30,
-              child:
-                  ElevatedButton(
-                    onPressed: () {}, 
-                    child: Text(
-                      // "Save",
-                      translation(context).save,
-                      )
-                  ),
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: MediaQuery.of(context).size.height * 0.07,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.black,
+              ),
+              child: Center(
+                child: Text(
+                  translation(context).save,
+                ),
+              ),
             ),
           )
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          //   // ignore: sized_box_for_whitespace
+          //   child: Container(
+          //     width: double.infinity,
+          //     height: 30,
+          //     child:
+          //         ElevatedButton(
+          //           onPressed: () {},
+          //           child: Text(
+          //             // "Save",
+          //             translation(context).save,
+          //             )
+          //         ),
+          //   ),
+          // )
         ],
       ),
     );
@@ -128,22 +156,22 @@ class _Change_PasswordState extends State<Change_Password> {
             },
           ),
           const Divider(),
-          ListTile(
-            leading: const Icon(
-              Icons.lock_reset_outlined,
-              color: Colors.red,
-              size: 20,
-            ),
-            title: Text(
-              translation(context).chg_pass,
-              style: _textStyle,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(context, changpassRout);
-            },
-          ),
-          const Divider(),
+          // ListTile(
+          //   leading: const Icon(
+          //     Icons.lock_reset_outlined,
+          //     color: Colors.red,
+          //     size: 20,
+          //   ),
+          //   title: Text(
+          //     translation(context).chg_pass,
+          //     style: _textStyle,
+          //   ),
+          //   onTap: () {
+          //     Navigator.pop(context);
+          //     Navigator.pushNamed(context, changpassRout);
+          //   },
+          // ),
+          // const Divider(),
           ListTile(
             leading: const Icon(
               Icons.info_outline,
